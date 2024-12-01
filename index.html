@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faktúracia</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="form-container">
+        <!-- Formulár na zadanie údajov -->
+        <div class="form-dodavatel">
+            <h3>Dodávatel</h3>
+            <label for="company-name">Meno firmy</label>
+            <input type="text" id="company-name" name="company-name">
+
+            <label for="ico">IČO</label>
+            <input type="text" id="ico" name="ico">
+
+            <!-- Flexbox obal pre PŠČ a Mesto vedľa seba -->
+            <div class="flex-container">
+                <div class="input-group">
+                    <label for="psc">PŠČ</label>
+                    <input type="text" id="psc" name="psc">
+                </div>
+                <div class="input-group">
+                    <label for="mesto">Mesto</label>
+                    <input type="text" id="mesto" name="mesto">
+                </div>
+            </div>
+                <label for="contact-number">Telefónne číslo</label>
+                <input type="text" id="contact-number" name="contact-number">
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="form-odberatel">
+            <h3>Odberatel</h3>
+            <label for="company-name-other">Meno firmy</label>
+            <input type="text" id="company-name-other" name="company-name-other">
+
+            <label for="ico-other">IČO</label>
+            <input type="text" id="ico-other" name="ico-other">
+
+            <label for="bank-account-other">Bankový účet</label>
+            <input type="text" id="bank-account-other" name="bank-account-other">
+
+            <label for="contact-number-other">Telefónne číslo</label>
+            <input type="text" id="contact-number-other" name="contact-number-other">
+        </div>
+    </div>
+    <!-- Náhľad A4 -->
+    <div id="a4-preview">
+        <!-- Nadpis Faktúra -->
+        <div id="faktura-title">
+            <p><strong>Faktúra</strong></p>
+        </div>
+
+        <div id="faktura-title-number">
+            <!-- <span>20240001</span> -->
+        </div>
+
+        <!-- Sekcia Dodávateľ -->
+        <div id="dodavatel-section">
+            <p class="dodavatel-section-title"><strong>Dodávateľ</strong></p>
+            <p id="preview-company-name"></p>
+            <p id="preview-ico"></p>
+            <p id="preview-psc"></p>
+            <p id="preview-mesto"></p>
+            <p id="preview-contact-number"></p>
+        </div>
+
+        <!-- Sekcia Odberateľ -->
+        <div id="odberatel-section">
+            <p class="odberatel-section-title"><strong>Odberateľ</strong></p>
+            <p id="preview-company-name-other"></p>
+            <p id="preview-ico-other"></p>
+            <p id="preview-bank-account-other"></p>
+            <p id="preview-contact-number-other"></p>
+        </div>
+
+        <div class="bank-details-update">
+            <div class="form-group-other">
+                <label for="bank">Banka</label>
+                <input type="text" id="bank" name="bank">
+            </div>
+
+            <div class="form-group-other">
+                <label for="iban">IBAN</label>
+                <input type="text" id="iban" name="iban">
+            </div>
+
+            <div class="form-group-other">
+                <label for="swift">SWIFT</label>
+                <input type="text" id="swift" name="swift">
+            </div>
+
+            <div class="form-group-other">
+                <label for="order">Objednávka</label>
+                <input type="text" id="order" name="order">
+            </div>
+        </div>
+
+                <!-- Sekcia bank udaje v a4 preview (not download) -->
+                <div id="bank-udaje">
+                    <p id="preview-bank"></p>
+                    <p id="preview-iban"></p>
+                    <p id="preview-swift"></p>
+                    <p id="preview-order"></p>
+                </div>
+            
+                <!-- Sekcia vystavenia v a4 preview (not download -->
+        <div class="form-container">   
+            <div class="invoice-splatnost-preview">
+                <div class="invoice-splatnost-dodanie-preview"></div>
+                <p id="preview-dodanie-datum"></p> <!-- Pridaný element na zobrazenie dátumu dodania -->   
+                <p id="preview-vystavenia-datum"></p>
+                <p id="preview-splatnost-datum"></p>
+            </div>
+        </div>
+
+        <div id="payment-type-preview">
+            <p id="uhrada-faktury"></p> <!-- Pridaný element na zobrazenie spôsobu úhrady -->
+        </div>
+
+        <div class="button-container">
+            <button id="bankovy-prevod" class="toggle-button active" onclick="setActiveButton('bankovy-prevod')">Bankový prevod</button>
+            <button id="hotovost" class="toggle-button" onclick="setActiveButton('hotovost')">Hotovosť</button>
+        </div>
+
+        <!-- SEKCIA KDE SA NACHADZA POPIS FAKTURACIE POPIS SUMA -->
+        <div class="invoice-item-section">
+            <div class="invoice-header">
+                <p>Názov a popis položky</p>
+                <p>Celkom EUR</p>
+            </div>
+        
+            <!-- Kontajner, kde sa budú pridávať všetky riadky položiek -->
+            <div id="invoice-items-container">
+                <div class="invoice-row">
+                    <div class="item-name">
+                        <label for="item-name">Názov položky</label>
+                        <input type="text" id="item-name" name="item-name" placeholder="Názov položky">
+                    </div>
+                    <div class="item-total">
+                        <label for="item-total">Celkom</label>
+                        <input type="text" id="item-total" name="item-total" placeholder="0 €">
+
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Tlačidlo na pridanie položky -->
+            <div class="add-item-button">
+                <button id="add-item-button" onclick="addInvoiceItem()">
+                    <span>➕</span> Pridať položku
+                </button>
+            </div>
+        
+            <div class="total-row">
+                <p>Suma na úhradu:</p>
+                <p id="total-sum">0 EUR</p>
+            </div>
+        </div>
+        
+        <script>
+        // Funkcia na pridanie novej položky do faktúry
+        function addInvoiceItem() {
+            const container = document.getElementById('invoice-items-container');
+        
+            // Vytvoríme nový div pre riadok položky
+            const newInvoiceRow = document.createElement('div');
+            newInvoiceRow.classList.add('invoice-row');
+        
+            // Vytvorenie názvu položky (label + input)
+            const itemNameDiv = document.createElement('div');
+            itemNameDiv.classList.add('item-name');
+            const itemNameLabel = document.createElement('label');
+            itemNameLabel.textContent = "Názov položky";
+            const itemNameInput = document.createElement('input');
+            itemNameInput.type = "text";
+            itemNameInput.name = "item-name";
+            itemNameInput.placeholder = "Názov položky";
+        
+            // Vloženie labelu a inputu do divu
+            itemNameDiv.appendChild(itemNameLabel);
+            itemNameDiv.appendChild(itemNameInput);
+        
+            // Vytvorenie ceny položky (label + input)
+            const itemTotalDiv = document.createElement('div');
+            itemTotalDiv.classList.add('item-total');
+            const itemTotalLabel = document.createElement('label');
+            itemTotalLabel.textContent = "Celkom";
+            const itemTotalInput = document.createElement('input');
+            itemTotalInput.type = "number";
+            itemTotalInput.name = "item-total";
+            itemTotalInput.value = "0 €";
+        
+            // Vloženie labelu a inputu do divu
+            itemTotalDiv.appendChild(itemTotalLabel);
+            itemTotalDiv.appendChild(itemTotalInput);
+        
+            // Pridanie itemNameDiv a itemTotalDiv do nového riadku
+            newInvoiceRow.appendChild(itemNameDiv);
+            newInvoiceRow.appendChild(itemTotalDiv);
+        
+            // Pridanie nového riadku do kontajnera
+            container.appendChild(newInvoiceRow);
+        }
+        </script>
+        
+
+        <!-- SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** -->
+        <div class="celok-datumov">
+            <div id="date-section-dodania">
+                <div class="date-picker">
+                    <label for="day-select-dodanie">Dátum dodania:</label>
+                    <select id="day-select-dodanie" class="minimal-dropdown">
+                        <option value="" disabled selected>DD</option>
+                        <!-- Automatické generovanie dní -->
+                        <script>
+                            for (let i = 1; i <= 31; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                    <span>.</span>
+                    <select id="month-select-dodanie" class="minimal-dropdown">
+                        <option value="" disabled selected>MM</option>
+                        <option value="1">Január</option>
+                        <option value="2">Február</option>
+                        <option value="3">Marec</option>
+                        <option value="4">Apríl</option>
+                        <option value="5">Máj</option>
+                        <option value="6">Jún</option>
+                        <option value="7">Júl</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">Október</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <span>.</span>
+                    <select id="year-select-dodanie" class="minimal-dropdown">
+                        <option value="" disabled selected>YYYY</option>
+                        <!-- Automatické generovanie rokov -->
+                        <script>
+                            const currentYear = new Date().getFullYear();
+                            for (let i = currentYear; i <= currentYear + 5; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+            </div>
+
+            <!-- DATUM VYSTAVENIA -->
+            <div id="date-section-vystavenia">
+                <div class="date-picker">
+                    <label for="day-select-vystavenia">Dátum vystavenia:</label>
+                    <select id="day-select-vystavenia" class="minimal-dropdown">
+                        <option value="" disabled selected>DD</option>
+                        <!-- Automatické generovanie dní -->
+                        <script>
+                            for (let i = 1; i <= 31; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                    <span>.</span>
+                    <select id="month-select-vystavenia" class="minimal-dropdown">
+                        <option value="" disabled selected>MM</option>
+                        <option value="1">Január</option>
+                        <option value="2">Február</option>
+                        <option value="3">Marec</option>
+                        <option value="4">Apríl</option>
+                        <option value="5">Máj</option>
+                        <option value="6">Jún</option>
+                        <option value="7">Júl</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">Október</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <span>.</span>
+                    <select id="year-select-vystavenia" class="minimal-dropdown">
+                        <option value="" disabled selected>YYYY</option>
+                        <!-- Automatické generovanie rokov -->
+                        <script>
+                            const currentYearVystavenia = new Date().getFullYear();
+                            for (let i = currentYear; i <= currentYear + 5; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+            </div>
+
+            <!-- DATUM SPLATNOSTI -->
+            <div id="date-section-splatnosti">
+                <div class="date-picker">
+                    <label for="day-select-splatnost">Splatnosť:</label>
+                    <select id="day-select-splatnost" class="minimal-dropdown">
+                        <option value="" disabled selected>DD</option>
+                        <!-- Automatické generovanie dní -->
+                        <script>
+                            for (let i = 1; i <= 31; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                    <span>.</span>
+                    <select id="month-select-splatnost" class="minimal-dropdown">
+                        <option value="" disabled selected>MM</option>
+                        <option value="1">Január</option>
+                        <option value="2">Február</option>
+                        <option value="3">Marec</option>
+                        <option value="4">Apríl</option>
+                        <option value="5">Máj</option>
+                        <option value="6">Jún</option>
+                        <option value="7">Júl</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">Október</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <span>.</span>
+                    <select id="year-select-splatnost" class="minimal-dropdown">
+                        <option value="" disabled selected>YYYY</option>
+                        <!-- Automatické generovanie rokov -->
+                        <script>
+                            const currentYearSplatnosti = new Date().getFullYear();
+                            for (let i = currentYear; i <= currentYear + 5; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="generatePDF()">Download</button>
+    <script src="main.js" defer></script>
+</body>
+
+</html>
