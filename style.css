@@ -208,6 +208,20 @@ body {
     
 }
 
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dva stĺpce - jeden pre label, druhý pre input */
+    gap: 20px; /* Medzera medzi prvkami */
+}
+
+.form-grid label {
+    grid-column: span 1; /* Label má zaberať jeden stĺpec */
+}
+
+.form-grid input {
+    grid-column: span 1; /* Input má byť hneď vedľa labelu */
+}
+
 .form-container input {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný tieň */
     width: 70%;
@@ -360,6 +374,8 @@ label[for="bank-account"] {
     border-radius: 8px;
     background-color: #f9f9f9;
     position: absolute;
+    top: 710px;
+    left: 50px;
 }
 
 .invoice-header {
@@ -411,6 +427,9 @@ label[for="bank-account"] {
     display: flex;
     align-items: center;
     gap: 5px;
+    position: absolute;
+    top: 175px;
+    right: 240px;
 }
 
 .add-item-button button:hover {
