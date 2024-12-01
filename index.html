@@ -52,6 +52,42 @@
             <input type="text" id="contact-number-other" name="contact-number-other">
         </div>
     </div>
+
+    <!-- SEKCIA KDE SA NACHADZA POPIS FAKTURACIE POPIS SUMA -->
+    <div class="form-container">
+        <div class="invoice-item-section">
+            <div class="invoice-header">
+                <p>Názov a popis položky</p>
+                <p>Celkom EUR</p>
+            </div>
+
+            <!-- Kontajner, kde sa budú pridávať všetky riadky položiek -->
+            <div id="invoice-items-container">
+                <div class="invoice-row">
+                    <div class="item-name">
+                        <label for="item-name">Názov položky</label>
+                        <input type="text" class="item-name-input" name="item-name" placeholder="Názov položky">
+                    </div>
+                    <div class="item-total">
+                        <label for="item-total">Celkom</label>
+                        <input type="text" class="item-total-input" name="item-total" placeholder="0 €">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tlačidlo na pridanie položky -->
+            <div class="add-item-button">
+                <button id="add-item-button">
+                    <span>➕</span> Pridať položku
+                </button>
+            </div>
+
+            <div class="total-row">
+                <p>Suma na úhradu:</p>
+                <p id="total-sum">0 EUR</p>
+            </div>
+        </div>
+    </div>
     <!-- Náhľad A4 -->
     <div id="a4-preview">
         <!-- Nadpis Faktúra -->
@@ -131,86 +167,7 @@
             <button id="hotovost" class="toggle-button" onclick="setActiveButton('hotovost')">Hotovosť</button>
         </div>
 
-        <!-- SEKCIA KDE SA NACHADZA POPIS FAKTURACIE POPIS SUMA -->
-        <div class="invoice-item-section">
-            <div class="invoice-header">
-                <p>Názov a popis položky</p>
-                <p>Celkom EUR</p>
-            </div>
         
-            <!-- Kontajner, kde sa budú pridávať všetky riadky položiek -->
-            <div id="invoice-items-container">
-                <div class="invoice-row">
-                    <div class="item-name">
-                        <label for="item-name">Názov položky</label>
-                        <input type="text" id="item-name" name="item-name" placeholder="Názov položky">
-                    </div>
-                    <div class="item-total">
-                        <label for="item-total">Celkom</label>
-                        <input type="text" id="item-total" name="item-total" placeholder="0 €">
-
-                    </div>
-                </div>
-            </div>
-        
-            <!-- Tlačidlo na pridanie položky -->
-            <div class="add-item-button">
-                <button id="add-item-button" onclick="addInvoiceItem()">
-                    <span>➕</span> Pridať položku
-                </button>
-            </div>
-        
-            <div class="total-row">
-                <p>Suma na úhradu:</p>
-                <p id="total-sum">0 EUR</p>
-            </div>
-        </div>
-        
-        <script>
-        // Funkcia na pridanie novej položky do faktúry
-        function addInvoiceItem() {
-            const container = document.getElementById('invoice-items-container');
-        
-            // Vytvoríme nový div pre riadok položky
-            const newInvoiceRow = document.createElement('div');
-            newInvoiceRow.classList.add('invoice-row');
-        
-            // Vytvorenie názvu položky (label + input)
-            const itemNameDiv = document.createElement('div');
-            itemNameDiv.classList.add('item-name');
-            const itemNameLabel = document.createElement('label');
-            itemNameLabel.textContent = "Názov položky";
-            const itemNameInput = document.createElement('input');
-            itemNameInput.type = "text";
-            itemNameInput.name = "item-name";
-            itemNameInput.placeholder = "Názov položky";
-        
-            // Vloženie labelu a inputu do divu
-            itemNameDiv.appendChild(itemNameLabel);
-            itemNameDiv.appendChild(itemNameInput);
-        
-            // Vytvorenie ceny položky (label + input)
-            const itemTotalDiv = document.createElement('div');
-            itemTotalDiv.classList.add('item-total');
-            const itemTotalLabel = document.createElement('label');
-            itemTotalLabel.textContent = "Celkom";
-            const itemTotalInput = document.createElement('input');
-            itemTotalInput.type = "number";
-            itemTotalInput.name = "item-total";
-            itemTotalInput.value = "0 €";
-        
-            // Vloženie labelu a inputu do divu
-            itemTotalDiv.appendChild(itemTotalLabel);
-            itemTotalDiv.appendChild(itemTotalInput);
-        
-            // Pridanie itemNameDiv a itemTotalDiv do nového riadku
-            newInvoiceRow.appendChild(itemNameDiv);
-            newInvoiceRow.appendChild(itemTotalDiv);
-        
-            // Pridanie nového riadku do kontajnera
-            container.appendChild(newInvoiceRow);
-        }
-        </script>
         
 
         <!-- SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** -->

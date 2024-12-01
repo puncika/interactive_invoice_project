@@ -359,6 +359,7 @@ label[for="bank-account"] {
     margin: 20px 0;
     border-radius: 8px;
     background-color: #f9f9f9;
+    position: absolute;
 }
 
 .invoice-header {

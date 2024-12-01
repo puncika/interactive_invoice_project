@@ -34,116 +34,105 @@ window.onload = function() {
 
 let itemCounter = 1; // Počítadlo položiek - už existuje prvá položka, preto začíname od 1
 
-// Funkcia na pridanie novej položky do faktúry
-function addInvoiceItem() {
-    if (itemCounter >= 5) {
-        return; // Ak je počet položiek >= 5, skonči funkciu a už nepridávaj
+// Funkcia na pridanie novej položky
+function addInvoiceItemRow() {
+    if (document.querySelectorAll(".invoice-row").length >= 5) {
+        document.getElementById("add-item-button").style.display = "none";
+        return;
     }
 
-    const container = document.getElementById('invoice-items-container');
+    const invoiceItemSection = document.querySelector(".invoice-item-section");
+    const newRow = document.createElement("div");
+    newRow.classList.add("invoice-row");
 
-    // Vytvoríme nový div pre riadok položky
-    const newInvoiceRow = document.createElement('div');
-    newInvoiceRow.classList.add('invoice-row');
+    newRow.innerHTML = `
+        <div class="item-name">
+            <label for="item-name">Názov položky</label>
+            <input type="text" class="item-name-input" name="item-name" placeholder="Názov položky">
+        </div>
+        <div class="item-total">
+            <label for="item-total">Celkom</label>
+            <input type="text" class="item-total-input" name="item-total" placeholder="0">
+            <span class="currency-symbol">€</span>
+        </div>
+    `;
+    invoiceItemSection.insertBefore(newRow, document.querySelector(".total-row"));
 
-    // Vytvorenie názvu položky (label + input)
-    const itemNameDiv = document.createElement('div');
-    itemNameDiv.classList.add('item-name');
-    const itemNameLabel = document.createElement('label');
-    itemNameLabel.textContent = "Názov položky";
-    const itemNameInput = document.createElement('input');
-    itemNameInput.type = "text";
-    itemNameInput.name = "item-name";
-    itemNameInput.placeholder = "Názov položky";
+    // Vyber nový input
+    const newItemTotalInput = newRow.querySelector('.item-total-input');
 
-    // Vloženie labelu a inputu do divu
-    itemNameDiv.appendChild(itemNameLabel);
-    itemNameDiv.appendChild(itemNameInput);
+    // Pridať správanie pre nový input, podobne ako pre pôvodné inputy
+    attachInputEventListeners(newItemTotalInput);
+}
 
-    // Vytvorenie ceny položky (label + input)
-    const itemTotalDiv = document.createElement('div');
-    itemTotalDiv.classList.add('item-total');
-    const itemTotalLabel = document.createElement('label');
-    itemTotalLabel.textContent = "Celkom";
-    const itemTotalInput = document.createElement('input');
-    itemTotalInput.type = "number";
-    itemTotalInput.name = "item-total";
-    itemTotalInput.value = "0.00";
+// Funkcia na pripojenie event listenerov na nové inputy
+function attachInputEventListeners(input) {
+    // Vymazanie placeholderu pri focus
+    input.addEventListener("focus", function () {
+        if (this.value === "0") {
+            this.value = "";
+        }
+    });
 
-    // Vloženie labelu a inputu do divu
-    itemTotalDiv.appendChild(itemTotalLabel);
-    itemTotalDiv.appendChild(itemTotalInput);
+    // Obnovenie placeholderu ak je prázdne pole pri odchode (blur)
+    input.addEventListener("blur", function () {
+        if (this.value === "") {
+            this.value = "0";
+        } else {
+            // Formátovanie čísla a pridať symbol €
+            formatCurrency(this);
+        }
+        updateTotalSum(); // Aktualizovať celkovú sumu
+    });
 
-    // Pridanie itemNameDiv a itemTotalDiv do nového riadku
-    newInvoiceRow.appendChild(itemNameDiv);
-    newInvoiceRow.appendChild(itemTotalDiv);
+    // Obmedzenie vstupu na čísla
+    input.addEventListener("input", function (e) {
+        const cleanValue = this.value.replace(/[^\d]/g, ""); // Odstráni všetko okrem čísiel
+        this.value = cleanValue;
+    });
+}
 
-    // Pridanie nového riadku do kontajnera
-    container.appendChild(newInvoiceRow);
+// Funkcia na formátovanie meny
+function formatCurrency(input) {
+    let value = input.value.replace(/[^\d]/g, ""); // Odstráni všetko okrem čísiel
+    if (value) {
+        value = parseInt(value).toLocaleString("sk-SK"); // Formátuje číslo so slovenským formátovaním
+    }
+    input.value = value;
 
-    // Zvýšime počítadlo položiek
-    itemCounter++;
-
-    // Skry tlačidlo, keď dosiahneme 5 položiek
-    if (itemCounter >= 5) {
-        document.getElementById('add-item-button').style.display = 'none';
+    // Pridáme € mimo inputu
+    const itemTotalDiv = input.parentElement;
+    let currencySymbol = itemTotalDiv.querySelector(".currency-symbol");
+    if (!currencySymbol) {
+        currencySymbol = document.createElement("span");
+        currencySymbol.classList.add("currency-symbol");
+        currencySymbol.textContent = "€";
+        itemTotalDiv.appendChild(currencySymbol);
     }
 }
 
+// Funkcia na aktualizáciu celkovej sumy
+function updateTotalSum() {
+    let totalSum = 0;
+    const itemTotalInputs = document.querySelectorAll('input[name="item-total"]');
+    itemTotalInputs.forEach(input => {
+        let value = parseInt(input.value.replace(/[^\d]/g, ""));
+        if (!isNaN(value)) {
+            totalSum += value;
+        }
+    });
+    document.getElementById("total-sum").textContent = `${totalSum.toLocaleString("sk-SK")} €`;
+}
+
+// Event listener pre tlačidlo pridania položky
+document.getElementById("add-item-button").addEventListener("click", addInvoiceItemRow);
+
+// Pridať event listenery na pôvodné inputy pri načítaní dokumentu
 document.addEventListener("DOMContentLoaded", function () {
     const itemTotalInputs = document.querySelectorAll('input[name="item-total"]');
-    const totalSumElement = document.getElementById("total-sum");
-
     itemTotalInputs.forEach(input => {
-        // Nastavenie placeholderu
-        input.placeholder = "0 €";
-
-        // Vymazanie placeholderu pri focus
-        input.addEventListener("focus", function () {
-            if (this.value === "0 €") {
-                this.value = "";
-            }
-        });
-
-        // Obnovenie placeholderu ak je prázdne pole pri odchode (blur)
-        input.addEventListener("blur", function () {
-            if (this.value === "") {
-                this.value = "0 €";
-            } else {
-                // Formátovanie čísla
-                formatCurrency(this);
-            }
-            // Aktualizácia celkovej sumy
-            updateTotalSum();
-        });
-
-        // Obmedzenie vstupu na čísla
-        input.addEventListener("input", function (e) {
-            const cleanValue = this.value.replace(/[^\d]/g, ""); // Odstráni všetko okrem čísiel
-            this.value = cleanValue;
-        });
+        attachInputEventListeners(input);
     });
-
-    // Funkcia na formátovanie meny
-    function formatCurrency(input) {
-        let value = input.value.replace(/[^\d]/g, ""); // Odstráni všetko okrem čísiel
-        if (value) {
-            value = parseInt(value).toLocaleString("sk-SK") + " €"; // Formátuje číslo so slovenským formátovaním
-        }
-        input.value = value;
-    }
-
-    // Funkcia na aktualizáciu celkovej sumy
-    function updateTotalSum() {
-        let totalSum = 0;
-        itemTotalInputs.forEach(input => {
-            let value = parseInt(input.value.replace(/[^\d]/g, ""));
-            if (!isNaN(value)) {
-                totalSum += value;
-            }
-        });
-        totalSumElement.textContent = `${totalSum.toLocaleString("sk-SK")} €`;
-    }
 });
 
 
