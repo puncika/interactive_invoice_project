@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="sk">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faktúracia</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="node_modules/qrcode/build/qrcode.js"></script>
+    <script src="paybysquare.js"></script>
 </head>
 
 <body>
+    <canvas id="qrcode"></canvas>
     <div class="form-container">
         <!-- Formulár na zadanie údajov -->
         <div class="form-dodavatel">
+            <div id="qrcode"></div>
             <h3>Dodávatel</h3>
             <label for="company-name">Meno firmy</label>
             <input type="text" id="company-name" name="company-name">
@@ -313,7 +315,8 @@
             </div> 
         </div>
     </div>
-
+   
+    
     <button onclick="generatePDF()">Download</button>
     <script src="main.js" defer></script>
 </body>

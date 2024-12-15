@@ -1,3 +1,5 @@
+
+
 // Funkcia na prepnutie aktívneho tlačidla
 function setActiveButton(activeId) {
     const buttons = document.querySelectorAll('.toggle-button');
@@ -365,9 +367,6 @@ function updateSplatnostDatum() {
         document.getElementById("preview-splatnost-datum").textContent = "";
     }
 }
-
-
-
 
 
 function generatePDF() {
