@@ -1,4 +1,4 @@
-function generatePayBySquareString(iban, amount, currency, variableSymbol) {
+function generatePayBySquareString(iban, amount, currency, variableSymbol) { // BAD VARIABLESMYBOL
     // Uistite sa, že variableSymbol je číselný reťazec
     if (typeof variableSymbol === 'number') {
         variableSymbol = variableSymbol.toString();
