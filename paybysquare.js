@@ -1,9 +1,13 @@
-function generatePayBySquareString(iban, amount, currency, variableSymbol) { // BAD VARIABLESMYBOL
-    // Uistite sa, že variableSymbol je číselný reťazec
+function generatePayBySquareString(iban, amount, currency, variableSymbol) {
+    // Uistite sa, že variableSymbol je číselný reťazec a má maximálne 10 znakov
     if (typeof variableSymbol === 'number') {
         variableSymbol = variableSymbol.toString();
+    } else if (typeof variableSymbol !== 'string') {
+        throw new Error('Variable symbol must be a string or number.');
     }
-    return `SPD*1.0*ACC:${iban}*AM:${amount}*CC:${currency}*VS:${variableSymbol}`;
+    variableSymbol = variableSymbol.padStart(10, '0').slice(-10); // Zabezpečí, že symbol má 10 číslic, doplní nulami a orezáva na 10 znakov
+
+    return `SPD*1.0*ACC:${iban}*AM:${amount}*CC:${currency}*X-VS:${variableSymbol}*`;
 }
 
 const paymentData = {
