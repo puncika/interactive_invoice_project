@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="node_modules/qrcode/build/qrcode.js"></script>
     <script src="paybysquare.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -317,8 +318,9 @@
     </div>
    
     
-    <button onclick="generatePDF()">Download</button>
+    <button id="generate-pdf">Download</button>
     <script src="main.js" defer></script>
+    <script src="pdfgenerate.js"></script>
 </body>
 
 </html>
