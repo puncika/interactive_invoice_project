@@ -1,5 +1,3 @@
-
-
 // Funkcia na prepnutie aktívneho tlačidla
 function setActiveButton(activeId) {
     const buttons = document.querySelectorAll('.toggle-button');
@@ -368,27 +366,3 @@ function updateSplatnostDatum() {
     }
 }
 
-
-function generatePDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF()
-
-   
-
-
-    doc.text("Dodávateľ", 10, 10);
-    doc.text(document.getElementById("company-name").value, 10, 20);
-    doc.text(document.getElementById("ico").value, 10, 30);
-    doc.text(document.getElementById("bank-account").value, 10, 40);
-    doc.text(document.getElementById("contact-number").value, 10, 50);
-    doc.text("Odberateľ", 10, 60);
-    doc.text(document.getElementById("company-name-other").value, 10, 70);
-    doc.text(document.getElementById("ico-other").value, 10, 80);
-    doc.text(document.getElementById("bank-account-other").value, 10, 90);
-    doc.text(document.getElementById("contact-number-other").value, 10, 100);
-    
-    console.log(doc.getFontList());
-
-
-    doc.save("faktura.pdf");
-}; 
