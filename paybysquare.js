@@ -6,23 +6,23 @@ function generatePayBySquareString(iban, amount, currency, variableSymbol, const
 
     // Formátovanie symbolov na 10 číslic
     variableSymbol = variableSymbol.padStart(10, '0').slice(-10);
-    constantSymbol = constantSymbol;
-    specificSymbol = specificSymbol;
-
-    // Formátovanie dátumu splatnosti na YYYY-MM-DD, iba ak je dueDate poskytnuté
-    let formattedDueDate = '';
-    if (dueDate) {
-        const now = new Date();
-        dueDate = dueDate > now ? dueDate : now;
-        formattedDueDate = dueDate.toISOString().split('T')[0];
-    }
 
     // Vytvorenie reťazca pre Pay by Square
     let qrString = `SPD*1.0*ACC:${iban}*AM:${amount}*CC:${currency}`;
     if (variableSymbol) qrString += `*X-VS:${variableSymbol}`;
     if (constantSymbol) qrString += `*X-KS:${constantSymbol}`;
     if (specificSymbol) qrString += `*X-SS:${specificSymbol}`;
-    if (formattedDueDate) qrString += `*DT:${formattedDueDate}`; // Pridáme dátum iba ak je definovaný
+    if (dueDate) {
+        // Kontrola, či dueDate nie je v minulosti
+        const now = new Date();
+        dueDate = dueDate > now ? dueDate : now;
+
+        // Formátovanie dátumu priamo v reťazci
+        const day = dueDate.getDate().toString().padStart(2, '0');
+        const month = (dueDate.getMonth() + 1).toString().padStart(2, '0');
+        const year = dueDate.getFullYear();
+        qrString += `*DT:${year}${month}${day}`; // Formát bez pomlčiek
+    }
     if (reference) qrString += `*RF:${reference}`;
     if (message) qrString += `*MSG:${message}`;
     qrString += `*`; // Ukončovací znak
@@ -30,7 +30,7 @@ function generatePayBySquareString(iban, amount, currency, variableSymbol, const
     return qrString;
 }
 
-// Príklad použitia bez dátumu splatnosti
+// Príklad použitia s dátumom splatnosti v budúcnosti
 const paymentData = {
     IBAN: "SK4111000000002930271893",
     Amount: "100.00",
@@ -38,8 +38,8 @@ const paymentData = {
     VariableSymbol: "123456", // Príklad variabilného symbolu
     ConstantSymbol: "123", // Príklad konštantného symbolu
     SpecificSymbol: "456", // Príklad špecifického symbolu
-    DueDate: undefined, // Dátum splatnosti nie je poskytnutý
-    Reference: "Platba za služby", // Referencia platiteľa
+    DueDate: new Date('2024-12-16'), // Dátum splatnosti nastavený na 17.12.2024
+    Reference: "", // Referencia platiteľa
     Message: "Ďakujeme za obchod!" // Správa pre prijímateľa
 };
 
@@ -50,7 +50,7 @@ const qrString = generatePayBySquareString(
     paymentData.VariableSymbol, 
     paymentData.ConstantSymbol, 
     paymentData.SpecificSymbol, 
-    paymentData.DueDate, // undefined
+    paymentData.DueDate, 
     paymentData.Reference, 
     paymentData.Message
 );
