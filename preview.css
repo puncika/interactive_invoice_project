@@ -1,0 +1,203 @@
+/* -------------------------------------------------------------------------------
+    VELKÁ INTERAKTIVNA A4 STRANA
+-------------------------------------------------------------------------------    */
+#a4-preview {
+    width: 150mm; /* Šírka A4 */
+    height: 180mm; /* Výška A4 */
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: grid;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative; /* Potrebné pre zarovnanie tlačidla */
+    left: 400px;
+    margin: 50px;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* -------------------------------------------------------------------------------
+    FAKTÚRA NADPIS
+-------------------------------------------------------------------------------    */
+#faktura-title {   /*  FAKTÚRA NADPIS   */      
+    position: relative; /* Potrebné pre zarovnanie tlačidla */
+    bottom: 40px;
+    left: 310px;
+    font-size: 30px;
+}
+
+/* -------------------------------------------------------------------------------
+    ČISLO POD NADPISOM FAKTÚRA
+-------------------------------------------------------------------------------    */
+#faktura-title-number {
+    position: absolute;
+    bottom: 176mm;
+    left: 341px;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    ODBERATEĽ NADPIS
+-------------------------------------------------------------------------------    */
+.odberatel-section-title {
+    position: relative; /* Potrebné pre zarovnanie tlačidla */
+    right: -200px;
+    bottom: 82px;
+}
+
+/* -------------------------------------------------------------------------------
+    DODAVATEĽ NADPIS
+-------------------------------------------------------------------------------    */
+.dodavatel-section-title {
+    position: relative; /* Potrebné pre zarovnanie tlačidla */
+    bottom: 37px;
+}
+
+/* --------- UPRAVA UDAJOV V PREVIEW DODAVATEL -----------------------------------
+/* -------------------------------------------------------------------------------
+    MENO FIRMY V DODAVATEĽ
+-------------------------------------------------------------------------------    */
+#preview-company-name {
+    position: absolute;
+    top: 40mm;
+    left: 8mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    IČO V DODAVATEĽ
+-------------------------------------------------------------------------------    */
+#preview-ico {
+    position: absolute;
+    top: 35mm;
+    left: 8mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    PSČ V DODAVATEĽ
+-------------------------------------------------------------------------------    */
+#preview-psc {
+    position: absolute;
+    top: 40mm;
+    left: 8mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    MESTO V DODAVATEĽ
+-------------------------------------------------------------------------------    */
+#preview-mesto {
+    position: absolute;
+    top: 40mm;
+    left: 20mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    TEL ČISLO V DODAVATEĽ
+-------------------------------------------------------------------------------    */
+#preview-contact-number {
+    position: absolute;
+    top: 45mm;
+    left: 8mm;
+    font-size: 12px;
+}
+
+/* --------- UPRAVA UDAJOV V PREVIEW ODBERATEL -----------------------------------
+/* -------------------------------------------------------------------------------
+    MENO FIRMY V ODBERATEĽ
+-------------------------------------------------------------------------------    */
+#preview-company-name-other {
+    position: absolute;
+    top: 30mm;
+    left: 61mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    IČO V ODBERATEĽ
+-------------------------------------------------------------------------------    */
+#preview-ico-other {
+    position: absolute;
+    top: 35mm;
+    left: 61mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    BANKOVÝ úČET V ODBERATEĽ
+-------------------------------------------------------------------------------    */
+#preview-bank-account-other {
+    position: absolute;
+    top: 40mm;
+    left: 61mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    TELEFONNÉ ČISLO V ODBERATEĽ
+-------------------------------------------------------------------------------    */
+#preview-contact-number-other {
+    position: absolute;
+    top: 45mm;
+    left: 61mm;
+    font-size: 12px;
+}
+
+/* * --------- TU BY MALA BYŤ INÁ SEKCIA ----------------------------------------- */
+/* -------------------------------------------------------------------------------
+    BANKA POD SEKCIOU DODAVATEL A ODBERATEĽ
+-------------------------------------------------------------------------------    */
+#preview-bank {
+    position: absolute;
+    top: 40mm;
+    left: 61mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    IBAN POD SEKCIOU DODAVATEL A ODBERATEĽ
+-------------------------------------------------------------------------------    */
+#preview-iban {
+    position: absolute;
+    top: 40mm;
+    left: 61mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    SWIFT POD SEKCIOU DODAVATEL A ODBERATEĽ
+-------------------------------------------------------------------------------    */
+#preview-swift {
+    position: absolute;
+    top: 40mm;
+    left: 61mm;
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------------
+    OBJEDNÁVKA POD SEKCIOU DODAVATEL A ODBERATEĽ
+-------------------------------------------------------------------------------    */
+#preview-order {
+    position: absolute;
+    top: 40mm;
+    left: 61mm;
+    font-size: 12px;
+}
+
+
+.invoice-splatnost-preview {
+    display: flex;
+    /* flex-direction: column; */ /* Zarovná všetky deti do stĺpca */
+}
+
+
+
+.date-group {
+    margin-inline: 40px;
+
+}
+
