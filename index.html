@@ -119,6 +119,7 @@
             <p id="preview-bank-account-other"></p>
             <p id="preview-contact-number-other"></p>
         </div>
+     <div class="form-container">   
         <div class="form-grid">
             <div class="bank-details-update">
                 <div class="form-group-other">
@@ -141,6 +142,7 @@
                     <input type="text" id="order" name="order">
                 </div>
             </div>
+         </div>        
             <div class="button-container">
                 <button id="bankovy-prevod" class="toggle-button active" onclick="setActiveButton('bankovy-prevod')">Bankový prevod</button>
                 <button id="hotovost" class="toggle-button" onclick="setActiveButton('hotovost')">Hotovosť</button>
@@ -155,14 +157,22 @@
                 </div>
             
                 <!-- Sekcia vystavenia v a4 preview (not download -->
-        <div class="form-container">   
-            <div class="invoice-splatnost-preview">
-                <div class="invoice-splatnost-dodanie-preview"></div>
-                <p id="preview-dodanie-datum"></p> <!-- Pridaný element na zobrazenie dátumu dodania -->   
-                <p id="preview-vystavenia-datum"></p>
-                <p id="preview-splatnost-datum"></p>
-            </div>
-        </div>
+                <div class="form-container">   
+                    <div class="invoice-splatnost-preview">
+                        <div class="date-group">
+                            <p class="date-label">Datum dodania</p>
+                            <p class="date-value" id="preview-dodanie-datum"></p>
+                        </div>
+                        <div class="date-group">
+                            <p class="date-label">Datum vystavenia</p>
+                            <p class="date-value" id="preview-vystavenia-datum"></p>
+                        </div>
+                        <div class="date-group">
+                            <p class="date-label">Splatnosť</p>
+                            <p class="date-value" id="preview-splatnost-datum"></p>
+                        </div>
+                    </div>
+                </div>
 
         <div id="payment-type-preview">
             <p id="uhrada-faktury"></p> <!-- Pridaný element na zobrazenie spôsobu úhrady -->
@@ -319,6 +329,8 @@
     
     <button id="generate-pdf">Download</button>
     <script src="main.js" defer></script>
+    <script src="preview.js" defer></script>
+    <script src="currencytab.js" defer></script>
     <script src="pdfgenerate.js"></script>
 </body>
 
