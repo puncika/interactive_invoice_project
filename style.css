@@ -1,45 +1,4 @@
-/* ------------------------------------------------------ */
-
-#a4-preview {
-    width: 150mm; /* Šírka A4 */
-    height: 180mm; /* Výška A4 */
-    border: 1px solid #333;
-    background-color: #ffffff;
-    padding: 30px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    position: relative; /* Potrebné pre zarovnanie tlačidla */
-    right: -100px;
-    margin: 50px;
-    color: #333;
-    font-size: 0.9em;
-}
-
-#faktura-title {
-    position: relative; /* Potrebné pre zarovnanie tlačidla */
-    bottom: 40px;
-    left: 310px;
-    font-size: 30px;
-}
-
-/* UPRAVA NADPISU ODBERATEL V PREVIEW */
-
-.odberatel-section-title {
-    position: relative; /* Potrebné pre zarovnanie tlačidla */
-    right: -200px;
-    bottom: 82px;
-}
-
-/* UPRAVA NADPISU DODAVATEL V PREVIEW */
-
-.dodavatel-section-title {
-    position: relative; /* Potrebné pre zarovnanie tlačidla */
-    bottom: 37px;
-}
-
+/* NEVIEM CO TOTO ROBIT ZISTIT 18.12.2024 */
 #section.title {
     font-size: 14px;
     font-weight: bold;
@@ -47,124 +6,9 @@
     margin-bottom: 10px;
 }
 
-/* UPRAVA UDAJOV V PREVIEW DODAVATEL */
-
-#preview-company-name {
-    position: absolute;
-    top: 30mm;
-    left: 8mm;
-    font-size: 12px;
-}
-
-#preview-ico {
-    position: absolute;
-    top: 35mm;
-    left: 8mm;
-    font-size: 12px;
-}
-
-#preview-psc {
-    position: absolute;
-    top: 40mm;
-    left: 8mm;
-    font-size: 12px;
-}
-
-#preview-mesto {
-    position: absolute;
-    top: 40mm;
-    left: 20mm;
-    font-size: 12px;
-}
-
-#preview-contact-number {
-    position: absolute;
-    top: 45mm;
-    left: 8mm;
-    font-size: 12px;
-}
-
-/* UPRAVA UDAJOV V PREVIEW ODBERATEL */
-
-#preview-company-name-other {
-    position: absolute;
-    top: 30mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-#preview-ico-other {
-    position: absolute;
-    top: 35mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-#preview-bank-account-other {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-#preview-bank {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-#preview-iban {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-#preview-swift {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-#preview-order {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-#preview-contact-number-other {
-    position: absolute;
-    top: 45mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-/* #preview-dodanie-datum {
-    margin-top: 10px;
-    font-style: italic;
-    color: #555;
-} */
-#preview-vystavenia-datum {
-    margin-top: 10px;
-    font-style: italic;
-    color: #555;
-}
-#preview-splatnost-datum {
-    margin-top: 10px;
-    font-style: italic;
-    color: #555;
-}
 
 
-#faktura-title-number {
-    position: absolute;
-    bottom: 176mm;
-    left: 341px;
-    font-size: 12px;
-}
+
 
 .form-section-info {
     display: grid;
@@ -177,20 +21,20 @@
     top: 400px;
     left: -800px;
 }
-
+/*
 button {
     display: block;
-    margin: 0 auto; /* zarovná tlačidlo do stredu, ak ho chceš v strede */
+    margin: 0 auto; zarovná tlačidlo do stredu, ak ho chceš v strede 
     padding: 10px 20px;
     background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
-    position: relative; /* Potrebné pre zarovnanie tlačidla */
+    position: relative; /* Potrebné pre zarovnanie tlačidla 
     top: 830px;
     right: 270px;
-}
-
+    */
+    
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -209,6 +53,7 @@ body {
 }
 
 .form-grid {
+    position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr; /* Dva stĺpce - jeden pre label, druhý pre input */
     gap: 20px; /* Medzera medzi prvkami */
@@ -267,7 +112,17 @@ input[type="number"] {
 
 
 
-
+button {    /* DOWNLOAD BUTTON GREEN    */     
+    display: block;
+    position: relative; /* Potrebné pre zarovnanie tlačidla */
+    right: 150px;
+    margin: 0 auto; /* zarovná tlačidlo do stredu, ak ho chceš v strede */
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 
 button:hover {
     background-color: #45a049;
@@ -521,17 +376,7 @@ span {
 
 }
 
-/* NASTAVENIE PRE BANKA DETAILS A SEKCIE POD NOU 
-.bank-details-update {
-    position: relative;
-    top: 100px;
-    right: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dve stĺpce */
-    /*gap: 20px; /* Medzera medzi prvkami 
 
-}
-    */
 
 
 
@@ -541,9 +386,7 @@ span {
     display: grid;
     grid-template-columns: 1fr 1fr;  /* Dve stĺpce */
     gap: 20px; /* Medzera medzi prvkami */
-    position: relative;
-    right: 750px;
-    top: 120px;
+
 }
 
 .form-group-other {
