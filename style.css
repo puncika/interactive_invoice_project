@@ -1,3 +1,257 @@
+/* -------------------------------------------------------------------------------
+    KONTAJNERE
+-------------------------------------------------------------------------------    */
+.form-left-section-all {
+    display: flex;
+    gap: 50px; /* Medzera medzi formulármi */
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Medzera medzi skupinami polí */
+}
+
+.form-group {
+    margin-bottom: 10px;
+    width: 350px;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+input {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný tieň */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* -------------------------------------------------------------------------------
+    HLAVNÁ ČASŤ STRÁNKY - UPRAVA FONTU A OSTATNYCH VECI, KTORE SA APLIKUJU NA VŠETKO
+-------------------------------------------------------------------------------    */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+/* -------------------------------------------------------------------------------
+    TU SA UPRAVUJE FORMULAR PRE DODÁVATEĽA
+-------------------------------------------------------------------------------    */
+.form-group-inline {
+    display: flex;
+    gap: 25px; /* Medzera medzi PSČ a Mesto */
+}
+
+.input-item-psc-mesto {
+    display: flex;
+    flex-direction: column;
+}
+
+/* -------------------------------------------------------------------------------
+    TU SA UPRAVUJE FORMULAR PRE ODBERATEĽA
+-------------------------------------------------------------------------------    */
+
+
+
+/* -------------------------------------------------------------------------------
+    UPRAVA STYLING PRE BANKA, IBAN, SWIFT, OBJEDNÁVKA
+-------------------------------------------------------------------------------    */
+/* .form-grid {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;  Dva stĺpce - jeden pre label, druhý pre input 
+    gap: 20px;  Medzera medzi prvkami 
+} */
+
+/* .form-grid label {
+    grid-column: span 1; /* Label má zaberať jeden stĺpec 
+} */
+
+/* .form-grid input {
+    grid-column: span 1; /* Input má byť hneď vedľa labelu
+} */
+
+/* .form-container input {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    width: 70%;
+    margin-top: 10px;
+} */
+
+.bank-details-update {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Dve stĺpce */
+    gap: 25px; /* Medzera medzi inputmi */
+    width: 350px;
+    margin-left: 30px;
+    margin-top: 50px;
+ 
+
+}
+
+.container-bank-iban-swift-order {
+    display: flex;
+    flex-direction: column; /* Label nad inputom */
+}
+
+
+
+/* -------------------------------------------------------------------------------
+    Štýl a pozicia pre tlačidlá BANKOVÝ PREVOD A HOTOVOSŤ
+-------------------------------------------------------------------------------    */
+.button-container-bank-cash {
+    display: flex;
+    gap: 10px;
+    margin-top: -10px;
+}
+
+/* Bankový prevod tlačidlo */
+#bankovy-prevod {
+    padding: 15px 30px;
+    border: 1px medium rgb(0, 0, 0);
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-height: 150px;
+    white-space: nowrap; /* Zabráni zalamovaniu textu */
+    text-align: center;  /* Zarovná text do stredu tlačidla */
+}
+
+/* Hotovosť tlačidlo */
+#hotovost {
+    padding: 15px 60px;
+    border: 1px medium rgb(0, 0, 0);
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-height: 150px;
+    white-space: nowrap; /* Zabráni zalamovaniu textu */
+    text-align: center;  /* Zarovná text do stredu tlačidla */
+}
+
+.toggle-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.toggle-button.active {
+    background-color: #05a0dd;
+    color: white;
+}
+
+.toggle-button:not(.active) {
+    background-color: white;
+    color: black;
+    border: 1px solid gray;
+}
+
+/* -------------------------------------------------------------------------------
+    SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** 
+-------------------------------------------------------------------------------    */
+/* DATUM DODANIA Styling a POZICIA */
+
+#date-section-dodania {
+    width: 345px; /* Automatická šírka podľa obsahu */
+    padding: 10px; /* Vnútorné okraje */
+    background-color: #f9f9f9; /* Svetlosivé pozadie na oddelenie */
+    border-radius: 5px; /* Zaoblené rohy */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný tieň */
+    margin-top: 45px;
+}
+
+/* - **DATUM **VYSTAVENIA* Styling a POZICIA** - */
+
+#date-section-vystavenia {
+    width: 345px; /* Automatická šírka podľa obsahu */
+    padding: 10px; /* Vnútorné okraje */
+    background-color: #f9f9f9; /* Svetlosivé pozadie na oddelenie */
+    border-radius: 5px; /* Zaoblené rohy */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný tieň */
+    margin-top: 20px;
+}
+
+/* DATUM Splatnosti Styling a POZICIA */
+
+#date-section-splatnosti {
+    width: 345px; /* Automatická šírka podľa obsahu */
+    padding: 10px; /* Vnútorné okraje */
+    background-color: #f9f9f9; /* Svetlosivé pozadie na oddelenie */
+    border-radius: 5px; /* Zaoblené rohy */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný tieň */
+    margin-top: 20px;
+
+}
+
+.celok-datumov {
+    position: absolute;
+    flex-direction: column;
+    margin-left: 430px;
+    margin-top: 35px;
+}
+
+.date-picker {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.minimal-dropdown {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #333;
+    appearance: none; /* Minimalizuje štýl prehliadača */
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.minimal-dropdown:hover {
+    border-color: #007bff;
+}
+
+.minimal-dropdown:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+span {
+    font-size: 16px;
+    color: #555;
+}
+
 /* NEVIEM CO TOTO ROBIT ZISTIT 18.12.2024 */
 #section.title {
     font-size: 14px;
@@ -35,61 +289,20 @@ button {
     right: 270px;
     */
     
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 20px;
-    padding: 20px;
-    background-color: #f4f4f9;
-}
 
-.form-container {
+
+/* .form-container {
     background: #f4f4f9;
     padding: 20px;
     border-radius: 8px;
     
-}
-
-.form-grid {
-    position: absolute;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dva stĺpce - jeden pre label, druhý pre input */
-    gap: 20px; /* Medzera medzi prvkami */
-}
-
-.form-grid label {
-    grid-column: span 1; /* Label má zaberať jeden stĺpec */
-}
-
-.form-grid input {
-    grid-column: span 1; /* Input má byť hneď vedľa labelu */
-}
-
-.form-container input {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný tieň */
-    width: 70%;
-    margin-top: 10px;
-
-}
-
-.form-dodavatel input {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný tieň */
-    width: 70%;
-    margin-top: 10px;
-
-}
+} */
 
 
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 10px;
-}
+
+
+
 
 input[type="text"],
 input[type="email"],
@@ -101,101 +314,30 @@ input[type="number"] {
     font-size: 14px;
 }
 
-.flex-container {
-    display: flex;
-    gap: 0px; /* Medzera medzi PŠČ a Mesto */
-}
-
-.flex-container .input-group {
-    flex: 1; /* Zabezpečí, že oba inputy budú mať rovnakú šírku */
-}
 
 
 
-button {    /* DOWNLOAD BUTTON GREEN    */     
+
+#generate-pdf {    /* DOWNLOAD BUTTON GREEN    */     
     display: block;
-    position: relative; /* Potrebné pre zarovnanie tlačidla */
-    right: 150px;
+    position: absolute; /* Potrebné pre zarovnanie tlačidla */
+    left: 75%; /* Posunie tlačidlo do stredu */
+    transform: translate(-50%, 0); /* Presunie späť o polovicu svoj šírky, aby bol zarovnané na stred */
     margin: 0 auto; /* zarovná tlačidlo do stredu, ak ho chceš v strede */
     padding: 10px 20px;
     background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
+    max-height: 40px;
+    text-align: center; /* Zarovná text v tlačidle na stred */
+    bottom: 50px;
 }
 
-button:hover {
+#generate-pdf:hover {
     background-color: #45a049;
 }
 
-button {
-    max-height: 40px;
-    position: relative;
-    right: 330px;
-}
-
-/* Štýl pre tlačidlá */
-.button-container {
-    position: absolute; /* Nastav absolútnu pozíciu vzhľadom na rodičovský kontajner */
-    top: 330px; /* Vertikálna pozícia od vrchu */
-    right: 1130px; /* Horizontálna pozícia od ľavého okraja */
-}
-
-/* Bankový prevod tlačidlo */
-#bankovy-prevod {
-    position: relative; /* Nastavenie absolútnej pozície */
-    top: 250px; /* Vertikálne posunutie */
-    left: 510px; /* Horizontálne posunutie */
-    padding: 15px 20px;
-    border: 1px medium rgb(0, 0, 0);
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    max-height: 150px;
-    white-space: nowrap; /* Zabráni zalamovaniu textu */
-    text-align: center;  /* Zarovná text do stredu tlačidla */
-}
-
-/* Hotovosť tlačidlo */
-#hotovost {
-    position: relative; /* Nastavenie absolútnej pozície */
-    top: 250px; /* Vertikálne posunutie */
-    left: 510px; /* Horizontálne posunutie */
-    padding: 15px 45px;
-    border: 1px medium rgb(0, 0, 0);
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    max-height: 150px;
-    white-space: nowrap; /* Zabráni zalamovaniu textu */
-    text-align: center;  /* Zarovná text do stredu tlačidla */
-}
-
-.button-container {
-    display: flex;
-    gap: 10px;
-}
-
-.toggle-button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.toggle-button.active {
-    background-color: #05a0dd;
-    color: white;
-}
-
-.toggle-button:not(.active) {
-    background-color: white;
-    color: black;
-    border: 1px solid gray;
-}
 
 
 
@@ -292,115 +434,6 @@ label[for="bank-account"] {
 }
 
 
-/* SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** */
-
-.date-picker {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-}
-
-.minimal-dropdown {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 14px;
-    color: #333;
-    appearance: none; /* Minimalizuje štýl prehliadača */
-    outline: none;
-    cursor: pointer;
-    transition: border-color 0.3s;
-}
-
-.minimal-dropdown:hover {
-    border-color: #007bff;
-}
-
-.minimal-dropdown:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-span {
-    font-size: 16px;
-    color: #555;
-}
-
-/* DATUM Splatnosti Styling a POZICIA */
-
-#date-section-splatnosti {
-    position: absolute; /* Nastav absolútnu pozíciu vzhľadom na rodičovský kontajner */
-    top: 560px; /* Vertikálna pozícia od vrchu */
-    left: 195px; /* Horizontálna pozícia od ľavého okraja */
-    width: 335px; /* Automatická šírka podľa obsahu */
-    padding: 9px; /* Vnútorné okraje */
-    background-color: #f9f9f9; /* Svetlosivé pozadie na oddelenie */
-    border-radius: 5px; /* Zaoblené rohy */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný tieň */
-}
-
-/* DATUM DODANIA Styling a POZICIA */
-
-#date-section-dodania {
-    position: absolute; /* Nastav absolútnu pozíciu vzhľadom na rodičovský kontajner */
-    top: 500px; /* Vertikálna pozícia od vrchu */
-    left: 195px; /* Horizontálna pozícia od ľavého okraja */
-    width: 335px; /* Automatická šírka podľa obsahu */
-    padding: 10px; /* Vnútorné okraje */
-    background-color: #f9f9f9; /* Svetlosivé pozadie na oddelenie */
-    border-radius: 5px; /* Zaoblené rohy */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný tieň */
-}
-
-/* - **DATUM **VYSTAVENIA* Styling a POZICIA** - */
-
-#date-section-vystavenia {
-    position: absolute; /* Nastav absolútnu pozíciu vzhľadom na rodičovský kontajner */
-    top: 500px; /* Vertikálna pozícia od vrchu */
-    left: 575px; /* Horizontálna pozícia od ľavého okraja */
-    width: auto; /* Automatická šírka podľa obsahu */
-    padding: 5px; /* Vnútorné okraje */
-    background-color: #f9f9f9; /* Svetlosivé pozadie na oddelenie */
-    border-radius: 5px; /* Zaoblené rohy */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný tieň */
-}
-
-.celok-datumov {
-    position: absolute;
-    top: 20px;
-    right: 1510px;
-
-
-}
-
-
-
-
-
-/* OPRAVIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIT TOTO JE TO SUCASTOU TOTO FROM GROUP A PODOBNE TOHO BANKD ETAILS// */
-
-.bank-details-update {
-    display: grid;
-    grid-template-columns: 1fr 1fr;  /* Dve stĺpce */
-    gap: 20px; /* Medzera medzi prvkami */
-
-}
-
-.form-group-other {
-    display: flex;
-    flex-direction: column; /* Label nad inputom */
-}
-
-
-
-.contact-number-tel {
-    position: relative;
-    bottom: 80px;
-
-}
 
 /*background-color: #05a0dd;  Tyrkysová farba pozadia */
 
