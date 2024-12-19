@@ -13,6 +13,7 @@ function generateInvoiceNumber() {
 
 /* <!--    SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** --> */
 
+
 // Získanie aktuálneho dátumu
 const currentDate = new Date();
 
