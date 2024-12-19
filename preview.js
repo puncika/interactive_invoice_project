@@ -87,7 +87,7 @@ document.addEventListener("input", function(event) {
     LISTENERY DO A4 PREVIEW Z INPUTOV A PODOBNE
    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
-document.getElementById("company-name").addEventListener("input", function() {
+/* document.getElementById("company-name").addEventListener("input", function() {
     document.getElementById("preview-company-name").textContent = this.value;
 });
 document.getElementById("ico").addEventListener("input", function() {
@@ -125,4 +125,18 @@ document.getElementById("swift").addEventListener("input", function() {
 });
 document.getElementById("order").addEventListener("input", function() {
     document.getElementById("preview-order").textContent = this.value;
-});
+}); */
+
+function initializeSections() {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        const title = section.querySelector('h2');
+        const content = section.querySelector('.section-content');
+        
+        if (content) {
+            title.after(content); // Presunie obsah pod nadpis
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initializeSections);
