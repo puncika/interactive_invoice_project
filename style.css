@@ -8,6 +8,10 @@
     margin-top: 30px;
 }
 
+.left-form-bankdetails-with-date {
+    margin-top: -20px;
+}
+
 .form-section {
     display: flex;
     flex-direction: column;
@@ -214,7 +218,7 @@ body {
     position: absolute;
     flex-direction: column;
     margin-left: 430px;
-    margin-top: 35px;
+    margin-top: -25px;
 }
 
 .date-picker {
@@ -223,6 +227,22 @@ body {
     gap: 5px;
     font-family: Arial, sans-serif;
     font-size: 14px;
+}
+
+.date-picker option {
+    margin-left: 10px;
+}
+
+.date-picker select {
+    margin-left: 10px;
+}
+
+#date-section-vystavenia .date-picker #day-select-vystavenia {
+    margin-left: 5px;
+}
+
+#date-section-splatnosti .date-picker #day-select-splatnost {
+    margin-left: 27px;
 }
 
 .minimal-dropdown {
@@ -321,7 +341,7 @@ input[type="number"] {
 #generate-pdf {    /* DOWNLOAD BUTTON GREEN    */     
     display: block;
     position: absolute; /* Potrebné pre zarovnanie tlačidla */
-    left: 75%; /* Posunie tlačidlo do stredu */
+    left: 1450px; /* Posunie tlačidlo do stredu */
     transform: translate(-50%, 0); /* Presunie späť o polovicu svoj šírky, aby bol zarovnané na stred */
     margin: 0 auto; /* zarovná tlačidlo do stredu, ak ho chceš v strede */
     padding: 10px 20px;
@@ -336,6 +356,7 @@ input[type="number"] {
 
 #generate-pdf:hover {
     background-color: #45a049;
+    cursor: pointer;
 }
 
 
@@ -363,16 +384,15 @@ label[for="bank-account"] {
 
 /* TU SA NACHADZA STYLING PRE POPIS FAKTURACIE SUMA  */
 /* ----------------------------------------------------------------------------------------------- */
-
+/* NA UPRAVOVANIE CELEJ TABULKY POHYBOVANIE A POD */
 .invoice-item-section {
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; 
+    background-color: #f9f9f9; 
     padding: 15px;
-    margin: 20px 0;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    margin-left: 30px;
     position: absolute;
-    top: 710px;
-    left: 50px;
+    margin-top: 30px;
+
 }
 
 .invoice-header {
@@ -382,21 +402,39 @@ label[for="bank-account"] {
     margin-bottom: 10px;
 }
 
+/* NA UPRAVOVANIE VNUTRA TABULKY */
 .invoice-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+/*     background-color: #f9f9f9;
+    border: 1px solid #ccc; */
+    width: 705px;
+    padding: 15px;
+    gap: 10px;
+}
+
+.currency-symbol{
+    position: absolute;
+    margin-top: -25px;
+    margin-left: 125px;
 }
 
 .item-name,
 .item-total {
-    flex: 1;
     margin-right: 10px;
+    margin-left: -10px;
+    margin-top: -20px;
+}
+
+.item-name input {
+    width: 550px;
 }
 
 .item-total {
     max-width: 150px;
+    gap: 50px;
 }
 
 .total-row {
@@ -406,11 +444,21 @@ label[for="bank-account"] {
     font-size: 16px;
     font-weight: bold;
     color: #333;
+    background-color: #05a0dd;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 40px;
+}
+
+.total-row p {
+    padding-left: 10px; /* Odsunie text od ľavej strany */
 }
 
 #total-sum {
     font-size: 18px;
-    color: #0056b3;
+    color: #ffffff;  /* #0056b3 */
+    padding-right: 10px;
+
 }
 
 .add-item-button button {
@@ -420,17 +468,19 @@ label[for="bank-account"] {
     padding: 10px 15px;
     font-size: 1em;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 1px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 5px;
     position: absolute;
-    top: 175px;
-    right: 240px;
+    margin-left: 5px;
+    margin-top: -20px;
 }
 
 .add-item-button button:hover {
     background-color: #218838; /* Trochu tmavšia zelená pri hover */
+    cursor: pointer;
 }
 
 
