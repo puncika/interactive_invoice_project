@@ -4,24 +4,16 @@ let itemCounter = 1; // Počítadlo položiek - už existuje prvá položka, pre
 
 // Funkcia na pridanie novej položky
 function addInvoiceItemRow() {
-    if (document.querySelectorAll(".invoice-row").length >= 5) {
-        document.getElementById("add-item-button").style.display = "none";
-        return;
-    }
-
     const invoiceItemSection = document.querySelector(".invoice-item-section");
     const newRow = document.createElement("div");
     newRow.classList.add("invoice-row");
 
     newRow.innerHTML = `
         <div class="item-name">
-            <label for="item-name">Názov položky</label>
-            <input type="text" class="item-name-input" name="item-name" placeholder="Názov položky">
+            <input type="text" class="item-name-input" name="item-name" placeholder="Popis položky">
         </div>
         <div class="item-total">
-            <label for="item-total">Celkom</label>
-            <input type="text" class="item-total-input" name="item-total" placeholder="0">
-            <span class="currency-symbol">€</span>
+            <input type="text" class="item-total-input" name="item-total" placeholder="0 €">
         </div>
     `;
     invoiceItemSection.insertBefore(newRow, document.querySelector(".total-row"));
@@ -31,6 +23,15 @@ function addInvoiceItemRow() {
 
     // Pridať správanie pre nový input, podobne ako pre pôvodné inputy
     attachInputEventListeners(newItemTotalInput);
+
+    // Presunúť tlačidlo pod nový riadok
+    const addButtonContainer = document.querySelector(".add-item-button");
+    invoiceItemSection.insertBefore(addButtonContainer, document.querySelector(".total-row"));
+    
+    // Skontrolovať počet riadkov po pridaní nového riadku
+    if (document.querySelectorAll(".invoice-row").length >= 5) {
+        document.querySelector(".add-item-button").style.display = "none";
+    }
 }
 
 // Funkcia na pripojenie event listenerov na nové inputy
