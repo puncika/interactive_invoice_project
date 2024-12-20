@@ -59,6 +59,7 @@
         </div>
     </div>
     <!-- SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** -->
+     <div class="left-form-bankdetails-with-date">
     <div class="celok-datumov">
         <div id="date-section-dodania">
             <div class="date-picker">
@@ -105,17 +106,22 @@
         <!-- DATUM VYSTAVENIA -->
         <div id="date-section-vystavenia">
             <div class="date-picker">
-                <label for="day-select-vystavenia">Dátum vystavenia:</label>
-                <select id="day-select-vystavenia" class="minimal-dropdown">
-                    <option value="" disabled selected>DD</option>
-                    <!-- Automatické generovanie dní -->
-                    <script>
-                        for (let i = 1; i <= 31; i++) {
-                            document.write(`<option value="${i}">${i}</option>`);
-                        }
-                    </script>
-                </select>
+
+                    <label for="day-select-vystavenia">Dátum vystavenia:</label>
+                    <select id="day-select-vystavenia" class="minimal-dropdown">
+                        <option value="" disabled selected>DD</option>
+                        <!-- Automatické generovanie dní -->
+                        <script>
+                            for (let i = 1; i <= 31; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+ 
+                <div class="date-picker-select-container">     
                 <span>.</span>
+                </div>  
+                <div class="date-picker-select-container"> 
                 <select id="month-select-vystavenia" class="minimal-dropdown">
                     <option value="" disabled selected>MM</option>
                     <option value="1">Január</option>
@@ -131,7 +137,11 @@
                     <option value="11">November</option>
                     <option value="12">December</option>
                 </select>
+                </div>
+                <div class="date-picker-select-container">
                 <span>.</span>
+                </div>
+                <div class="date-picker-select-container">
                 <select id="year-select-vystavenia" class="minimal-dropdown">
                     <option value="" disabled selected>YYYY</option>
                     <!-- Automatické generovanie rokov -->
@@ -142,6 +152,7 @@
                         }
                     </script>
                 </select>
+                </div>
             </div>
         </div>
 
@@ -215,25 +226,20 @@
                     <button id="hotovost" class="toggle-button" onclick="setActiveButton('hotovost')">Hotovosť</button>
                 </div>
              </div>
-
+            </div>    
 
     <!-- SEKCIA KDE SA NACHADZA POPIS FAKTURACIE POPIS SUMA -->
     <div class="form-container">
         <div class="invoice-item-section">
-            <div class="invoice-header">
-                <p>Názov a popis položky</p>
-                <p>Celkom EUR</p>
-            </div>
-
             <!-- Kontajner, kde sa budú pridávať všetky riadky položiek -->
             <div id="invoice-items-container">
                 <div class="invoice-row">
                     <div class="item-name">
                         <label for="item-name">Názov položky</label>
-                        <input type="text" class="item-name-input" name="item-name" placeholder="Názov položky">
+                        <input type="text" class="item-name-input" name="item-name" placeholder="Popis položky">
                     </div>
                     <div class="item-total">
-                        <label for="item-total">Celkom</label>
+                        <label for="item-total">Celkom EUR</label>
                         <input type="text" class="item-total-input" name="item-total" placeholder="0 €">
                     </div>
                 </div>
@@ -241,14 +247,11 @@
 
             <!-- Tlačidlo na pridanie položky -->
             <div class="add-item-button">
-                <button id="add-item-button">
-                    <span><strong>+</strong></span> Pridať položku
-                </button>
+                <button id="add-item-button"><strong>+</strong> Pridať položku</button>
             </div>
-
             <div class="total-row">
                 <p>Suma na úhradu:</p>
-                <p id="total-sum">0 EUR</p>
+                <p id="total-sum"><strong>0 EUR</strong></p>
             </div>
         </div>
     </div>
