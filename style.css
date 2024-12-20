@@ -65,6 +65,14 @@ body {
 /* -------------------------------------------------------------------------------
     TU SA UPRAVUJE FORMULAR PRE DODÁVATEĽA
 -------------------------------------------------------------------------------    */
+.obalenie-dodavatela {      /* TOTO TU MUSI ZOSTAT JE TO NA TO ABY NEBOLO VIDNO DIV */
+    display: contents;
+}
+
+.obalenie-odberatela { /* TOTO TU MUSI ZOSTAT JE TO NA TO ABY NEBOLO VIDNO DIV */
+    display: contents;
+}
+
 .form-group-inline {
     display: flex;
     gap: 25px; /* Medzera medzi PSČ a Mesto */

@@ -15,6 +15,7 @@
     <div class="form-left-section-all">
         <div class="form-section">
             <h3>Dodávatel</h3>
+            <div class="obalenie-dodavatela">
             <div class="form-group">
                 <label for="company-name">Meno firmy</label>
                 <input type="text" id="company-name" name="company-name">
@@ -38,8 +39,10 @@
                 <input type="text" id="contact-number" name="contact-number">
             </div>
         </div>
+    </div>
         <div class="form-section">
             <h3>Odberatel</h3>
+            <div class="obalenie-odberatela">
             <div class="form-group">
                 <label for="company-name-other">Meno firmy</label>
                 <input type="text" id="company-name-other" name="company-name-other">
@@ -56,6 +59,7 @@
                 <label for="contact-number-other">Telefónne číslo</label>
                 <input type="text" id="contact-number-other" name="contact-number-other">
             </div>
+        </div>
         </div>
     </div>
     <!-- SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** -->
@@ -261,20 +265,23 @@
 <!-- -------------------------------------------------------------------------------
                         NÁHĽAD V A4 - PREVIEW ALL
 ------------------------------------------------------------------------------- -->   
-<div class="parent-container">
     <div id="a4-preview">
         <!-- Nadpis Faktúra -->
         <div id="faktura-title">
-            <p><strong>Faktúra</strong></p>
+            <strong>Faktúra</strong>
         </div>
-        <div id="faktura-title">
+
             <div id="faktura-title-number">
                 <!-- <span>20240001</span> -->
             </div>
-        </div>
+
         <!-- Sekcia Dodávateľ -->
+
+        <div class="headers-dodavatel-odberatel">
+            <div id="dodavatel-section-title"><h3><strong>Dodávateľ</strong></h3></div>
+                <div id="odberatel-section-title"><h3><strong>Odberateľ</strong></p></h3></div>
+        </div>
         <div id="dodavatel-section">
-            <p class="dodavatel-section-title"><strong>Dodávateľ</strong></p>
             <p id="preview-company-name"></p>
             <p id="preview-ico"></p>
             <p id="preview-psc"></p>
@@ -284,14 +291,17 @@
 
         <!-- Sekcia Odberateľ -->
         <div id="odberatel-section">
-            <p class="odberatel-section-title"><strong>Odberateľ</strong></p>
             <p id="preview-company-name-other"></p>
             <p id="preview-ico-other"></p>
             <p id="preview-bank-account-other"></p>
             <p id="preview-contact-number-other"></p>
         </div>
+
+        <div id="preview-suma-blue"></div>
      
                 <!-- Sekcia bank udaje v a4 preview (not download) -->
+
+                    <h4 id="bankoveudaje-header">Bankové údaje</h4>
                 <div id="bank-udaje">
                     <p id="preview-bank"></p>
                     <p id="preview-iban"></p>
@@ -301,20 +311,30 @@
             
                 <!-- Sekcia vystavenia v a4 preview (not download -->
 
-                    <div class="invoice-splatnost-preview">
+                <div class="invoice-splatnost-preview">
+                    <div class="date-labels">
                         <div class="date-group">
                             <p class="date-label">Datum dodania</p>
-                            <p class="date-value" id="preview-dodanie-datum"></p>
                         </div>
                         <div class="date-group">
                             <p class="date-label">Datum vystavenia</p>
-                            <p class="date-value" id="preview-vystavenia-datum"></p>
                         </div>
                         <div class="date-group">
                             <p class="date-label">Splatnosť</p>
+                        </div>
+                    </div>
+                    <div class="date-values">
+                        <div class="date-group">
+                            <p class="date-value" id="preview-dodanie-datum"></p>
+                        </div>
+                        <div class="date-group">
+                            <p class="date-value" id="preview-vystavenia-datum"></p>
+                        </div>
+                        <div class="date-group">
                             <p class="date-value" id="preview-splatnost-datum"></p>
                         </div>
                     </div>
+                </div>
 
 
         <div id="payment-type-preview">
@@ -329,7 +349,7 @@
             <div id="preview-total-sum">
                 <p id="preview-final-sum"></p>
             </div>
-    </div>
+        </div>
    
     <button id="generate-pdf">Download</button>
 </div>

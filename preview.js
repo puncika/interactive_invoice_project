@@ -87,21 +87,24 @@ document.addEventListener("input", function(event) {
     LISTENERY DO A4 PREVIEW Z INPUTOV A PODOBNE
    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
-/* document.getElementById("company-name").addEventListener("input", function() {
+document.getElementById("company-name").addEventListener("input", function() {
     document.getElementById("preview-company-name").textContent = this.value;
 });
 document.getElementById("ico").addEventListener("input", function() {
     document.getElementById("preview-ico").textContent = this.value;
 });
-document.getElementById("psc").addEventListener("input", function() {
+document.getElementById("dodavatel-psc").addEventListener("input", function() {
     document.getElementById("preview-psc").textContent = this.value;
 });
-document.getElementById("mesto").addEventListener("input", function() {
+document.getElementById("dodavatel-mesto").addEventListener("input", function() {
     document.getElementById("preview-mesto").textContent = this.value;
 });
 document.getElementById("contact-number").addEventListener("input", function() {
     document.getElementById("preview-contact-number").textContent = this.value;
 });
+/* -----------------------------------------
+                ODBERATEL
+----------------------------------------- */
 document.getElementById("company-name-other").addEventListener("input", function() {
     document.getElementById("preview-company-name-other").textContent = this.value;
 });
@@ -114,29 +117,34 @@ document.getElementById("bank-account-other").addEventListener("input", function
 document.getElementById("contact-number-other").addEventListener("input", function() {
     document.getElementById("preview-contact-number-other").textContent = this.value;
 });
-document.getElementById("bank").addEventListener("input", function() {
-    document.getElementById("preview-bank").textContent = this.value;
-});
-document.getElementById("iban").addEventListener("input", function() {
-    document.getElementById("preview-iban").textContent = this.value;
-});
-document.getElementById("swift").addEventListener("input", function() {
-    document.getElementById("preview-swift").textContent = this.value;
-});
-document.getElementById("order").addEventListener("input", function() {
-    document.getElementById("preview-order").textContent = this.value;
-}); */
 
-function initializeSections() {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        const title = section.querySelector('h2');
-        const content = section.querySelector('.section-content');
-        
-        if (content) {
-            title.after(content); // Presunie obsah pod nadpis
-        }
-    });
-}
 
-document.addEventListener('DOMContentLoaded', initializeSections);
+document.querySelector('.bank-details-update').addEventListener('input', function(event) {
+    const target = event.target;
+    const previewId = 'preview-' + target.id;
+    const bankUdajeContainer = document.getElementById('bank-udaje');
+    const previewElement = bankUdajeContainer.querySelector('#' + previewId);
+    if (previewElement) {
+        previewElement.textContent = target.value;
+    }
+});
+
+document.querySelector('.obalenie-dodavatela').addEventListener('input', function(event) {
+    const target = event.target;
+    const previewId = 'preview-' + target.id;
+    const bankUdajeContainer = document.getElementById('dodavatel-section');
+    const previewElement = bankUdajeContainer.querySelector('#' + previewId);
+    if (previewElement) {
+        previewElement.textContent = target.value;
+    }
+});
+
+document.querySelector('.obalenie-odberatela').addEventListener('input', function(event) {
+    const target = event.target;
+    const previewId = 'preview-' + target.id;
+    const bankUdajeContainer = document.getElementById('odberatel-section');
+    const previewElement = bankUdajeContainer.querySelector('#' + previewId);
+    if (previewElement) {
+        previewElement.textContent = target.value;
+    }
+});

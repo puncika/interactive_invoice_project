@@ -5,11 +5,9 @@
     width: 170mm; /* Šírka A4 150mm */
     height: 197mm; /* Výška A4 180mm;  */
     background-color: #ffffff;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto 1fr 1fr 1fr auto;
     margin: 50px;
     color: #333;
     font-size: 0.9em;
@@ -18,185 +16,133 @@
     bottom: 700px;
 }
 
+
 /* -------------------------------------------------------------------------------
     FAKTÚRA NADPIS
 -------------------------------------------------------------------------------    */
-#faktura-title {   /*  FAKTÚRA NADPIS   */      
-    grid-column: 1 / 3;
+#faktura-title {   /*  FAKTÚRA NADPIS   */  
+    position: absolute;    
     text-align: right;
     font-size: 30px;
-    margin-right: 50px;
+    margin-top: 50px;
+    margin-left: 515px; 
 }
 
 /* -------------------------------------------------------------------------------
     ČISLO POD NADPISOM FAKTÚRA
 -------------------------------------------------------------------------------    */
 #faktura-title-number {
-    grid-column: 1 / 3;
-    text-align: right;
+    position: absolute;
+    text-align: center;
     font-size: 12px;
-    margin-top: -30px;
+    margin-top: 80px;
+    margin-left: 570px; 
+
 }
 
 /* -------------------------------------------------------------------------------
     DODAVATEĽ NADPIS
 -------------------------------------------------------------------------------    */
-.dodavatel-section-title {
-    grid-column: 1 / 2;
-    margin-left: 20px;
+#dodavatel-section-title {
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 200px;
+
+}
+
+
+.headers-dodavatel-odberatel {
+    display: flex;
+    align-items: center;
+    height: 40px; /* Nastav výšku podľa potreby */
+    margin-bottom: 10px; /* Ak chceš medzeru medzi nadpisom a obsahom */
 }
 /* -------------------------------------------------------------------------------
     ODBERATEĽ NADPIS
 -------------------------------------------------------------------------------    */
-.odberatel-section-title {
-    grid-column: 1 / 2;
+#odberatel-section-title {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 300px;
 
 }
 
+
+#bankoveudaje-header {
+    position: absolute;
+    margin-left: 60px;
+    margin-top: 550px;
+}
+
+#bank-udaje {
+    position: absolute;
+    margin-top: 570px;
+    margin-left: 60px;
+}
 
 /* --------- UPRAVA UDAJOV V PREVIEW DODAVATEL -----------------------------------
 /* -------------------------------------------------------------------------------
     MENO FIRMY V DODAVATEĽ
 -------------------------------------------------------------------------------    */
-#preview-company-name {
+#dodavatel-section {
     position: absolute;
-    top: 40mm;
-    left: 8mm;
-    font-size: 12px;
+    margin-left: 60px;
+    margin-top: 150px;
+
 }
 
-/* -------------------------------------------------------------------------------
-    IČO V DODAVATEĽ
--------------------------------------------------------------------------------    */
-#preview-ico {
-    position: absolute;
-    top: 35mm;
-    left: 8mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    PSČ V DODAVATEĽ
--------------------------------------------------------------------------------    */
-#preview-psc {
-    position: absolute;
-    top: 40mm;
-    left: 8mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    MESTO V DODAVATEĽ
--------------------------------------------------------------------------------    */
-#preview-mesto {
-    position: absolute;
-    top: 40mm;
-    left: 20mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    TEL ČISLO V DODAVATEĽ
--------------------------------------------------------------------------------    */
-#preview-contact-number {
-    position: absolute;
-    top: 45mm;
-    left: 8mm;
-    font-size: 12px;
-}
-
-/* --------- UPRAVA UDAJOV V PREVIEW ODBERATEL -----------------------------------
-/* -------------------------------------------------------------------------------
-    MENO FIRMY V ODBERATEĽ
--------------------------------------------------------------------------------    */
-#preview-company-name-other {
-    position: absolute;
-    top: 30mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    IČO V ODBERATEĽ
--------------------------------------------------------------------------------    */
-#preview-ico-other {
-    position: absolute;
-    top: 35mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    BANKOVÝ úČET V ODBERATEĽ
--------------------------------------------------------------------------------    */
-#preview-bank-account-other {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    TELEFONNÉ ČISLO V ODBERATEĽ
--------------------------------------------------------------------------------    */
-#preview-contact-number-other {
-    position: absolute;
-    top: 45mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-/* * --------- TU BY MALA BYŤ INÁ SEKCIA ----------------------------------------- */
-/* -------------------------------------------------------------------------------
-    BANKA POD SEKCIOU DODAVATEL A ODBERATEĽ
--------------------------------------------------------------------------------    */
-#preview-bank {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    IBAN POD SEKCIOU DODAVATEL A ODBERATEĽ
--------------------------------------------------------------------------------    */
-#preview-iban {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    SWIFT POD SEKCIOU DODAVATEL A ODBERATEĽ
--------------------------------------------------------------------------------    */
-#preview-swift {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
-}
-
-/* -------------------------------------------------------------------------------
-    OBJEDNÁVKA POD SEKCIOU DODAVATEL A ODBERATEĽ
--------------------------------------------------------------------------------    */
-#preview-order {
-    position: absolute;
-    top: 40mm;
-    left: 61mm;
-    font-size: 12px;
+#preview-psc, #preview-mesto {
+    display: inline-block;
+    margin-top: -50px;
+    margin-bottom: -50px;
 }
 
 
+/* --------- UPRAVA UDAJOV V PREVIEW ODBERATEL -----------------------------------*/
+#odberatel-section {
+    position: absolute;
+    margin-left: 320px;
+    margin-top: 150px;
+
+}
+/* -------------------------DATES-------------------------------- */
 .invoice-splatnost-preview {
     display: flex;
-    /* flex-direction: column; */ /* Zarovná všetky deti do stĺpca */
+    flex-direction: column; /* Pridanie vertikálneho zarovnania */
+    position: absolute;
+    margin-top: 535px;
+    margin-left: 250px;
 }
 
-
+.date-labels, .date-values {
+    display: flex;
+    justify-content: space-between; /* Pridanie horizontálneho zarovnania */
+}
 
 .date-group {
-    margin-inline: 40px;
-
+    flex: 1; /* Zabezpečí, že každá skupina zaberie rovnaký priestor */
+    gap: 100px;
 }
 
+.date-label {
+    margin: 0; /* Odstránenie predvolených okrajov */
+}
+
+.date-value {
+    margin: 0; /* Odstránenie predvolených okrajov */
+}
+
+/* ------------------------------------------------------- */
+#preview-suma-blue {
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background: #05a0dd;
+    padding: 40px;
+    margin-top: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 603px;
+}
