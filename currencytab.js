@@ -101,3 +101,50 @@ document.addEventListener("DOMContentLoaded", function () {
         attachInputEventListeners(input);
     });
 });
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+// Funkcia na aktualizáciu A4 preview pre položky faktúry
+function updateInvoicePreview() {
+    const previewContainer = document.getElementById("invoice-preview-items");
+    previewContainer.innerHTML = ""; // Vyčisti predchádzajúce položky
+    
+    const invoiceItems = document.querySelectorAll('.invoice-row');
+    invoiceItems.forEach(item => {
+        const itemName = item.querySelector('.item-name input').value;
+        const itemTotal = item.querySelector('.item-total input').value;
+
+        const previewRow = document.createElement('div');
+        previewRow.classList.add('preview-item-row');
+
+        const description = document.createElement('p');
+        description.classList.add('preview-item-description');
+        description.textContent = itemName;
+
+        const amount = document.createElement('p');
+        amount.classList.add('preview-item-amount');
+        amount.textContent = itemTotal;
+
+        previewRow.appendChild(description);
+        previewRow.appendChild(amount);
+
+        previewContainer.appendChild(previewRow);
+    });
+
+    // Aktualizácia celkovej sumy v náhľade
+    const totalSum = document.getElementById("total-sum").textContent;
+    document.getElementById("preview-final-sum").textContent = totalSum;
+}
+
+// Event listener na pridávanie novej položky (zabezpečí aj update náhľadu po pridaní)
+document.getElementById("add-item-button").addEventListener("click", function() {
+    addInvoiceItemRow();
+    updateInvoicePreview(); // Aktualizovať náhľad po pridaní položky
+});
+
+// Aktualizácia náhľadu po zmene v akomkoľvek inpute položiek faktúry
+document.addEventListener("input", function(event) {
+    if (event.target.matches('.item-name-input') || event.target.matches('.item-total-input')) {
+        updateInvoicePreview();
+    }
+});

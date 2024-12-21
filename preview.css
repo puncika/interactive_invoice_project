@@ -71,14 +71,21 @@
 #bankoveudaje-header {
     position: absolute;
     margin-left: 60px;
-    margin-top: 550px;
+    margin-top: 533px;
 }
 
 #bank-udaje {
     position: absolute;
-    margin-top: 570px;
+    margin-top: 543px;
     margin-left: 60px;
 }
+
+#payment-type-preview {
+    position: absolute;
+    margin-top: 680px;
+    margin-left: 60px;
+}
+
 
 /* --------- UPRAVA UDAJOV V PREVIEW DODAVATEL -----------------------------------
 /* -------------------------------------------------------------------------------
@@ -107,32 +114,32 @@
 }
 /* -------------------------DATES-------------------------------- */
 .invoice-splatnost-preview {
-    display: flex;
-    flex-direction: column; /* Pridanie vertikálneho zarovnania */
     position: absolute;
-    margin-top: 535px;
-    margin-left: 250px;
-}
-
-.date-labels, .date-values {
     display: flex;
-    justify-content: space-between; /* Pridanie horizontálneho zarovnania */
+    justify-content: space-between; /* Rovnomerne rozdelí priestor */
+    width: 450px; /* Uistite sa, že kontajner má plnú šírku */
+    top: 530px;
+    left: 230px;
 }
 
 .date-group {
-    flex: 1; /* Zabezpečí, že každá skupina zaberie rovnaký priestor */
-    gap: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* Centruje obsah */
+    width: 150px; /* Prípadne nastavte šírku, ktorá vám vyhovuje */
+    margin: 0, 50px; /* Ak chcete medzery medzi skupinami */
 }
 
-.date-label {
-    margin: 0; /* Odstránenie predvolených okrajov */
-}
-
-.date-value {
-    margin: 0; /* Odstránenie predvolených okrajov */
+.date-label, .date-value {
+    text-align: left;
+    width: 100%; /* Zabezpečí, že text sa bude rozťahovať na šírku rodiča */
+    margin: 5px 0; /* Medzera nad a pod textom */
+    font-size: 12px; /* Zmenšiteľná veľkosť písma */
+    margin: 0, -300px; /* Ak chcete medzery medzi skupinami */
 }
 
 /* ------------------------------------------------------- */
+
 #preview-suma-blue {
     position: absolute;
     font-size: 16px;
@@ -140,9 +147,90 @@
     color: #333;
     background: #05a0dd;
     padding: 40px;
-    margin-top: 400px;
+    padding-bottom: 20px;
+    margin-top: 465px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 603px;
+    width: 500px;
+    margin-left: 55px;
+}
+
+
+/* [TEXT CELKOVA SUMA NA UHRADU + 0 EUR] */
+#preview-total-sum {
+    display: flex;
+    align-items: center; /* Zarovná obsah vertikálne do stredu */
+    justify-content: space-between; /* Pridajte medzeru medzi textom a sumou */
+    position: absolute;
+    top: 470px;
+    left: 50px;
+    width: 600px; /* Nastavte šírku podľa potreby */
+}
+
+#preview-final-sum-text {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    margin-left: 20px; /* Nastavte medzeru medzi textom a sumou */
+    white-space: nowrap;
+}
+
+#preview-final-sum {
+    font-weight: bold;
+    font-size: 16px;
+    color: white; /* #0056b3 */
+    text-align: right; /* Zarovnajte text doprava */
+    white-space: nowrap; /* Zabezpečí, že text sa nebude zalamovať */
+    margin-right: 30px;
+}
+
+
+
+
+#header-of-polozky {
+    position: absolute;
+    top: 310px;
+    left: 60px;
+}
+
+#header-of-polozky-suma {
+    position: absolute;
+    top: 0px;
+    left: 510px;
+
+}
+
+#break-point {
+    margin-top: 1px;
+}
+
+.invoice-preview-items {
+    width: 560px; /* Príklad šírky; upravte podľa potreby */
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 350px;
+    left: 50px;
+}
+
+.preview-item-row {
+    width: 100%; /* Aby zaujímal celú šírku kontajnera */
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+    margin-top: -20px;
+}
+
+.preview-item-description {
+    text-align: right; /* Zarovnanie textu */
+    overflow: hidden; /* Skryje pretečený text */
+    white-space: nowrap; /* Zabezpečí, že text sa nebude zalamovať */
+    text-overflow: ellipsis; /* Pridá trojbodku, ak je text príliš dlhý */
+    margin-left: 10px;
+}
+
+.preview-item-amount {
+    text-align: right;
+    white-space: nowrap; /* Zabezpečí, že text sa nebude zalamovať */
 }

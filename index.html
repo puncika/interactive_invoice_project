@@ -233,9 +233,9 @@
             </div>    
 
     <!-- SEKCIA KDE SA NACHADZA POPIS FAKTURACIE POPIS SUMA -->
-    <div class="form-container">
+     <div class="form-container">
         <div class="invoice-item-section">
-            <!-- Kontajner, kde sa budú pridávať všetky riadky položiek -->
+
             <div id="invoice-items-container">
                 <div class="invoice-row">
                     <div class="item-name">
@@ -250,15 +250,15 @@
             </div>
 
             <!-- Tlačidlo na pridanie položky -->
-            <div class="add-item-button">
+         <div class="add-item-button">
                 <button id="add-item-button"><strong>+</strong> Pridať položku</button>
             </div>
             <div class="total-row">
                 <p>Suma na úhradu:</p>
                 <p id="total-sum"><strong>0 EUR</strong></p>
             </div>
-        </div>
-    </div>
+        </div> 
+     </div> 
 
      
 
@@ -298,6 +298,11 @@
         </div>
 
         <div id="preview-suma-blue"></div>
+                    <!-- Zobrazenie celkovej sumy v A4 preview -->
+                    <div id="preview-total-sum">
+                        <p id="preview-final-sum-text">Celková suma na uhradenie</p>
+                        <p id="preview-final-sum">0 EUR</p>
+                    </div>
      
                 <!-- Sekcia bank udaje v a4 preview (not download) -->
 
@@ -312,27 +317,17 @@
                 <!-- Sekcia vystavenia v a4 preview (not download -->
 
                 <div class="invoice-splatnost-preview">
-                    <div class="date-labels">
-                        <div class="date-group">
-                            <p class="date-label">Datum dodania</p>
-                        </div>
-                        <div class="date-group">
-                            <p class="date-label">Datum vystavenia</p>
-                        </div>
-                        <div class="date-group">
-                            <p class="date-label">Splatnosť</p>
-                        </div>
+                    <div class="date-group">
+                        <p class="date-label"><strong>Datum dodania</strong></p>
+                        <p class="date-value" id="preview-dodanie-datum"></p>
                     </div>
-                    <div class="date-values">
-                        <div class="date-group">
-                            <p class="date-value" id="preview-dodanie-datum"></p>
-                        </div>
-                        <div class="date-group">
-                            <p class="date-value" id="preview-vystavenia-datum"></p>
-                        </div>
-                        <div class="date-group">
-                            <p class="date-value" id="preview-splatnost-datum"></p>
-                        </div>
+                    <div class="date-group">
+                        <p class="date-label"><strong>Datum vystavenia</strong></p>
+                        <p class="date-value" id="preview-vystavenia-datum"></p>
+                    </div>
+                    <div class="date-group">
+                        <p class="date-label"><strong>Splatnosť</strong></p>
+                        <p class="date-value" id="preview-splatnost-datum"></p>
                     </div>
                 </div>
 
@@ -341,15 +336,18 @@
             <p id="uhrada-faktury"></p> <!-- Pridaný element na zobrazenie spôsobu úhrady -->
         </div>
 
-            
+
             <!-- Sekcia pre položky SUMA CELKOVA SUMA POPIS faktúry v A4 preview -->
+             <div id="header-of-polozky"><strong>Popis položiek</strong>
+                <div id="header-of-polozky-suma"><strong>Suma</strong></div>
+                <p id="break-point">----------------------------------------------------------------------------------------------------------------------</p>
+            </div>
             <div id="invoice-preview-items" class="invoice-preview-items"></div>
         
-            <!-- Zobrazenie celkovej sumy v A4 preview -->
-            <div id="preview-total-sum">
-                <p id="preview-final-sum"></p>
-            </div>
+
         </div>
+
+        
    
     <button id="generate-pdf">Download</button>
 </div>
