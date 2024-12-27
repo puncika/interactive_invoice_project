@@ -1,7 +1,6 @@
-/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-    BUTTONY BANKOVY PREVOD A HOTOVOST
-   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
-
+/*===============================================================================
+  |                            BUTTONY BANKOVY PREVOD A HOTOVOST                |
+  ===============================================================================*/
 // Funkcia na prepnutie aktívneho tlačidla - Bankový prevod A Hotovosť
 function setActiveButton(activeId) {
     const buttons = document.querySelectorAll('.toggle-button');
@@ -27,16 +26,19 @@ function setActiveButton(activeId) {
     document.getElementById('uhrada-faktury').innerHTML = paymentText;
 }
 
-/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-    PREVIEW DO A4 čo sa má premietnuť z currencytab.js
-   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+
+/*===============================================================================
+  |        PREVIEW DO A4 čo sa má premietnuť z currencytab.js                   |
+  ===============================================================================*/
 
 
 
-/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-    LISTENERY DO A4 PREVIEW Z INPUTOV A PODOBNE
-   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
-
+/*===============================================================================
+  |                  LISTENERY DO A4 PREVIEW Z INPUTOV A PODOBNE                |
+  ===============================================================================*/
+  /*===============================================================================
+  |                            DODAVATEL PREVIEW DO A4                          |
+  ===============================================================================*/
 document.getElementById("company-name").addEventListener("input", function() {
     document.getElementById("preview-company-name").textContent = this.value;
 });
@@ -52,9 +54,11 @@ document.getElementById("dodavatel-mesto").addEventListener("input", function() 
 document.getElementById("contact-number").addEventListener("input", function() {
     document.getElementById("preview-contact-number").textContent = this.value;
 });
-/* -----------------------------------------
-                ODBERATEL
------------------------------------------ */
+
+
+/*===============================================================================
+  |                            ODBERATEL PREVIEW DO A4                          |
+  ===============================================================================*/
 document.getElementById("company-name-other").addEventListener("input", function() {
     document.getElementById("preview-company-name-other").textContent = this.value;
 });
@@ -68,7 +72,9 @@ document.getElementById("contact-number-other").addEventListener("input", functi
     document.getElementById("preview-contact-number-other").textContent = this.value;
 });
 
-
+/*===============================================================================
+  |                            BANKOVE UDAJE DOLE V PREVIEW                     |
+  ===============================================================================*/
 document.querySelector('.bank-details-update').addEventListener('input', function(event) {
     const target = event.target;
     const previewId = 'preview-' + target.id;
@@ -79,6 +85,9 @@ document.querySelector('.bank-details-update').addEventListener('input', functio
     }
 });
 
+/*===============================================================================
+  |                            DODAVATEL LISTENERY - NECHAPEM                    |
+  ===============================================================================*/
 document.querySelector('.obalenie-dodavatela').addEventListener('input', function(event) {
     const target = event.target;
     const previewId = 'preview-' + target.id;
@@ -89,6 +98,9 @@ document.querySelector('.obalenie-dodavatela').addEventListener('input', functio
     }
 });
 
+/*===============================================================================
+  |                            ODBEREATEL LISTENERY - NECHAPEM                   |
+  ===============================================================================*/
 document.querySelector('.obalenie-odberatela').addEventListener('input', function(event) {
     const target = event.target;
     const previewId = 'preview-' + target.id;
