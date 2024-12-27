@@ -31,7 +31,7 @@ function generatePayBySquareString(iban, amount, currency, variableSymbol, const
 }
 
 // Príklad použitia s dátumom splatnosti v budúcnosti
-/* function updateQRCode() {
+function updateQRCode() {
     const paymentData = {
         IBAN: document.getElementById("iban").value,
         Amount: "100.00",
@@ -68,4 +68,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("iban").addEventListener("input", updateQRCode); 
     document.getElementById("order").addEventListener("input", updateQRCode);
     updateQRCode(); // Prvotné generovanie QR kódu - volanie funkcie updateQRCode
-}); */
+});
