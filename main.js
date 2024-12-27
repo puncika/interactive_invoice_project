@@ -1,3 +1,6 @@
+/*===============================================================================
+|         FUNKCIA NA NACITANIE STRANKY + NUMBER CISLA NA FAKTURU                 |
+  ===============================================================================*/
 window.onload = function() {
     console.log("Stránka je načítaná!");
     generateInvoiceNumber(); // Zavolá funkciu na generovanie čísla faktúry
@@ -11,9 +14,11 @@ function generateInvoiceNumber() {
 }
 
 
-/* <!--    SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** --> */
 
 
+/*===============================================================================
+|  SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI ** |
+  ===============================================================================*/
 // Získanie aktuálneho dátumu
 const currentDate = new Date();
 
