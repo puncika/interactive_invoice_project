@@ -1,6 +1,13 @@
-/* -------------------------------------------------------------------------------
-    KONTAJNERE
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |                            KONTAJNERE                                       |
+  ===============================================================================*/
+#wrapper-left {
+    position: relative;
+    left: 7%;
+    bottom: 15px;
+}
+
 .form-left-section-all {
     display: flex;
     gap: 50px; /* Medzera medzi formulármi */
@@ -54,17 +61,19 @@ input {
 }
 
 
-/* -------------------------------------------------------------------------------
-    HLAVNÁ ČASŤ STRÁNKY - UPRAVA FONTU A OSTATNYCH VECI, KTORE SA APLIKUJU NA VŠETKO
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+|HLAVNÁ ČASŤ STRÁNKY - UPRAVA FONTU A OSTATNYCH VECI, KTORE SA APLIKUJU NA VŠETKO|
+  ===============================================================================*/
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
 }
 
-/* -------------------------------------------------------------------------------
-    TU SA UPRAVUJE FORMULAR PRE DODÁVATEĽA
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |                            TU SA UPRAVUJE FORMULAR PRE DODÁVATEĽA           |
+  ===============================================================================*/
 .obalenie-dodavatela {      /* TOTO TU MUSI ZOSTAT JE TO NA TO ABY NEBOLO VIDNO DIV */
     display: contents;
 }
@@ -73,46 +82,36 @@ body {
     display: contents;
 }
 
+/*-------------------------------------------------------------------------------
+  | UPRAVOVANIE PSC OBLAENIE MESTA A PSC                                        |
+  -------------------------------------------------------------------------------*/
 .form-group-inline {
     display: flex;
     gap: 25px; /* Medzera medzi PSČ a Mesto */
 }
 
+/*-------------------------------------------------------------------------------
+  | UPRAVOVANIE PSC OBLAENIE MESTA A PSC                                        |
+  -------------------------------------------------------------------------------*/
 .input-item-psc-mesto {
     display: flex;
     flex-direction: column;
 }
 
-/* -------------------------------------------------------------------------------
-    TU SA UPRAVUJE FORMULAR PRE ODBERATEĽA
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |               TU SA UPRAVUJE FORMULAR PRE ODBERATEĽA                        |
+  ===============================================================================*/
 
 
 
-/* -------------------------------------------------------------------------------
-    UPRAVA STYLING PRE BANKA, IBAN, SWIFT, OBJEDNÁVKA
--------------------------------------------------------------------------------    */
-/* .form-grid {
-    position: absolute;
-    display: grid;
-    grid-template-columns: 1fr 1fr;  Dva stĺpce - jeden pre label, druhý pre input 
-    gap: 20px;  Medzera medzi prvkami 
-} */
 
-/* .form-grid label {
-    grid-column: span 1; /* Label má zaberať jeden stĺpec 
-} */
-
-/* .form-grid input {
-    grid-column: span 1; /* Input má byť hneď vedľa labelu
-} */
-
-/* .form-container input {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    width: 70%;
-    margin-top: 10px;
-} */
-
+/*===============================================================================
+  |               UPRAVA STYLING PRE BANKA, IBAN, SWIFT, OBJEDNÁVKA             |
+  ===============================================================================*/
+/*-------------------------------------------------------------------------------
+  | CELKOVY KONTAJNER PRE TIETO INPUTY                                          |
+  -------------------------------------------------------------------------------*/
 .bank-details-update {
     display: grid;
     grid-template-columns: 1fr 1fr;  /* Dve stĺpce */
@@ -131,9 +130,10 @@ body {
 
 
 
-/* -------------------------------------------------------------------------------
-    Štýl a pozicia pre tlačidlá BANKOVÝ PREVOD A HOTOVOSŤ
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |              Štýl a pozicia pre tlačidlá BANKOVÝ PREVOD A HOTOVOSŤ           |
+  ===============================================================================*/
 .button-container-bank-cash {
     display: flex;
     gap: 10px;
@@ -185,11 +185,11 @@ body {
     border: 1px solid gray;
 }
 
-/* -------------------------------------------------------------------------------
-    SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI** 
--------------------------------------------------------------------------------    */
-/* DATUM DODANIA Styling a POZICIA */
 
+/*===============================================================================
+|SEKCIA KDE SA NASTAVUJE **DATUM DODANIA** - **DATUM VYSTAVENIA** - **DATUM SPLATNOSTI**|
+  ===============================================================================*/
+  /* DATUM DODANIA Styling a POZICIA */
 #date-section-dodania {
     width: 345px; /* Automatická šírka podľa obsahu */
     padding: 10px; /* Vnútorné okraje */
@@ -200,7 +200,6 @@ body {
 }
 
 /* - **DATUM **VYSTAVENIA* Styling a POZICIA** - */
-
 #date-section-vystavenia {
     width: 345px; /* Automatická šírka podľa obsahu */
     padding: 10px; /* Vnútorné okraje */
@@ -211,7 +210,6 @@ body {
 }
 
 /* DATUM Splatnosti Styling a POZICIA */
-
 #date-section-splatnosti {
     width: 345px; /* Automatická šírka podľa obsahu */
     padding: 10px; /* Vnútorné okraje */
@@ -280,61 +278,8 @@ span {
     color: #555;
 }
 
-/* NEVIEM CO TOTO ROBIT ZISTIT 18.12.2024 */
-#section.title {
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
 
-
-
-
-
-.form-section-info {
-    display: grid;
-    max-width: 300px;
-    bottom: 150px;
-    left: 150px;
-    gap: 10px; /* Medzera medzi prvkami */
-    height: 30px; /* Celková výška kontajnera */
-    position: relative; /* Potrebné pre zarovnanie tlačidla */
-    top: 400px;
-    left: -800px;
-}
-/*
-button {
-    display: block;
-    margin: 0 auto; zarovná tlačidlo do stredu, ak ho chceš v strede 
-    padding: 10px 20px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    position: relative; /* Potrebné pre zarovnanie tlačidla 
-    top: 830px;
-    right: 270px;
-    */
-    
-
-
-/* .form-container {
-    background: #f4f4f9;
-    padding: 20px;
-    border-radius: 8px;
-    
-} */
-
-
-
-
-
-
-
-input[type="text"],
-input[type="email"],
-input[type="number"] {
+input[type="text"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -343,13 +288,15 @@ input[type="number"] {
 }
 
 
-
+/*===============================================================================
+|                             DOWNLOAD BUTTON GREEN                             |
+  ===============================================================================*/
 
 
 #generate-pdf {    /* DOWNLOAD BUTTON GREEN    */     
     display: block;
     position: absolute; /* Potrebné pre zarovnanie tlačidla */
-    left: 1450px; /* Posunie tlačidlo do stredu */
+    left: 73%; /* Posunie tlačidlo do stredu */
     transform: translate(-50%, 0); /* Presunie späť o polovicu svoj šírky, aby bol zarovnané na stred */
     margin: 0 auto; /* zarovná tlačidlo do stredu, ak ho chceš v strede */
     padding: 10px 20px;
@@ -371,28 +318,15 @@ input[type="number"] {
 
 
 
-#bank-account {
-    position: relative;
-    width: 48%; /* Nastaví šírku na 70% */
-    padding: 8px; /* Vnútorné okraje */
-    border: 2px solid #007bff; /* Modrý okraj */
-    border-radius: 10px; /* Zaoblené rohy */
-    background-color: #f9f9f9; /* Svetlosivý podklad */
-    font-size: 16px; /* Väčší text */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný tieň */
-}
-
-label[for="bank-account"] {
-    display: block; /* Label bude nad inputom */
-    margin-bottom: 5px; /* Priestor medzi labelom a inputom */
-    font-weight: bold; /* Tučný text */
-    font-size: 14px; /* Nastaví veľkosť písma */
-}
 
 
-/* TU SA NACHADZA STYLING PRE POPIS FAKTURACIE SUMA  */
-/* ----------------------------------------------------------------------------------------------- */
-/* NA UPRAVOVANIE CELEJ TABULKY POHYBOVANIE A POD */
+
+
+
+/*===============================================================================
+|      TOTO JE OBALENIE CELEJ TABULKY KDE JE NAZOV POLOZKY A CELKOM EUR         |
+  ===============================================================================*/
+/* NA UPRAVOVANIE CELEJ TABULKY PRIDAT POLOZKY VSETKO OD HORA DOLE POHYBOVANIE A POD */
 .invoice-item-section {
     border: 1px solid #ccc; 
     background-color: #f9f9f9; 
@@ -403,12 +337,12 @@ label[for="bank-account"] {
 
 }
 
-.invoice-header {
+/* .invoice-header {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
     margin-bottom: 10px;
-}
+} */
 
 /* NA UPRAVOVANIE VNUTRA TABULKY */
 .invoice-row {
@@ -423,10 +357,32 @@ label[for="bank-account"] {
     gap: 10px;
 }
 
-.currency-symbol{
+.remove-item-button {
+    background-color: rgb(228, 51, 51); /* Červené pozadie */
+    color: white; /* Biela farba textu */
+    border: none; /* Bez okraja */
+    padding: 1px 10px; /* Vnútorné odsadenie */
+    cursor: pointer; /* Kurzor ako ruka */
+    float: right; /* Zarovnanie doprava */
+    margin-top: -20px;
+    margin-left: 10px;
+    margin-right: -20px;
+    font-size: 15px;
+    border-radius: 2px;
+    white-space: nowrap; /* Zabráni zalamovaniu textu */
+    
+}
+
+.currency-symbol {
     position: absolute;
     margin-top: -25px;
-    margin-left: 125px;
+    margin-left: 95px;
+}
+
+.currency-symbol-only {
+    position: absolute;
+    margin-top: -25px;
+    margin-left: 130px;
 }
 
 .item-name,
@@ -440,9 +396,8 @@ label[for="bank-account"] {
     width: 550px;
 }
 
-.item-total {
+.item-total input {
     max-width: 150px;
-    gap: 50px;
 }
 
 .total-row {
@@ -493,10 +448,12 @@ label[for="bank-account"] {
 
 
 
-/*background-color: #05a0dd;  Tyrkysová farba pozadia */
 
 
-/*                               Mobilné štýly */
+/* ---------------------------------------------------------------------------- */
+/*===============================================================================
+|                                Mobilné štýly                                  |
+  ===============================================================================*/
 /* ---------------------------------------------------------------------------- */
 @media (max-width: 600px) {
     .container {
@@ -521,3 +478,5 @@ label[for="bank-account"] {
       flex-direction: column;
     }
   }
+
+  /*background-color: #05a0dd;  Tyrkysová farba pozadia */
