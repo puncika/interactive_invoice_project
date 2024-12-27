@@ -1,6 +1,7 @@
-/* -------------------------------------------------------------------------------
-    VELKÁ INTERAKTIVNA A4 STRANA
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |                            VELKÁ INTERAKTIVNA A4 STRANA                     |
+  ===============================================================================*/
 #a4-preview {
     width: 170mm; /* Šírka A4 150mm */
     height: 197mm; /* Výška A4 180mm;  */
@@ -12,14 +13,15 @@
     color: #333;
     font-size: 0.9em;
     position: relative;
-    left: 1050px; /* Posunie na polovicu šírky rodiča */
+    left: 53%; /* Posunie na polovicu šírky rodiča */
     bottom: 700px;
 }
 
 
-/* -------------------------------------------------------------------------------
-    FAKTÚRA NADPIS
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |                             FAKTÚRA NADPIS                                  |
+  ===============================================================================*/
 #faktura-title {   /*  FAKTÚRA NADPIS   */  
     position: absolute;    
     text-align: right;
@@ -28,9 +30,11 @@
     margin-left: 515px; 
 }
 
-/* -------------------------------------------------------------------------------
-    ČISLO POD NADPISOM FAKTÚRA
--------------------------------------------------------------------------------    */
+
+
+/*===============================================================================
+  |                 ČISLO POD NADPISOM FAKTÚRA                                  |
+  ===============================================================================*/
 #faktura-title-number {
     position: absolute;
     text-align: center;
@@ -40,9 +44,10 @@
 
 }
 
-/* -------------------------------------------------------------------------------
-    DODAVATEĽ NADPIS
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |                 DODAVATEĽ NADPIS                                            |
+  ===============================================================================*/
 #dodavatel-section-title {
     position: absolute;
     margin-left: 40px;
@@ -50,16 +55,19 @@
 
 }
 
-
+/*-------------------------------------------------------------------------------
+  | HEADERS NA POSUVANIE OBIDVOCH NADPISOV NARAZ                                |
+  -------------------------------------------------------------------------------*/
 .headers-dodavatel-odberatel {
     display: flex;
     align-items: center;
     height: 40px; /* Nastav výšku podľa potreby */
     margin-bottom: 10px; /* Ak chceš medzeru medzi nadpisom a obsahom */
 }
-/* -------------------------------------------------------------------------------
-    ODBERATEĽ NADPIS
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |                 ODBERATEĽ NADPIS                                            |
+  ===============================================================================*/
 #odberatel-section-title {
     position: absolute;
     margin-top: 200px;
@@ -67,19 +75,31 @@
 
 }
 
-
+/*===============================================================================
+  |                 BANKOVE UDAJE NADPIS                                        |
+  ===============================================================================*/
 #bankoveudaje-header {
     position: absolute;
     margin-left: 60px;
-    margin-top: 533px;
+    margin-top: 540px;
+    font-size: 17px;
+    font-weight: bolder;
 }
 
+/*-------------------------------------------------------------------------------
+  | VSETKY UDAJE POD BANKOVE UDAJE NADPIS                                       |
+  -------------------------------------------------------------------------------*/
 #bank-udaje {
     position: absolute;
-    margin-top: 543px;
+    margin-top: 560px;
     margin-left: 60px;
+    font-size: 14px;
+    font-weight: 550;
 }
 
+/*===============================================================================
+  |                 SPOSOB PLATBY:                                              |
+  ===============================================================================*/
 #payment-type-preview {
     position: absolute;
     margin-top: 680px;
@@ -87,10 +107,10 @@
 }
 
 
-/* --------- UPRAVA UDAJOV V PREVIEW DODAVATEL -----------------------------------
-/* -------------------------------------------------------------------------------
-    MENO FIRMY V DODAVATEĽ
--------------------------------------------------------------------------------    */
+
+/*===============================================================================
+  |                 UPRAVA UDAJOV V PREVIEW DODAVATEL                           |
+  ===============================================================================*/
 #dodavatel-section {
     position: absolute;
     margin-left: 60px;
@@ -98,6 +118,9 @@
 
 }
 
+/*-------------------------------------------------------------------------------
+  | PSC A MESTO UPRAVA V DODAVATEL                                              |
+  -------------------------------------------------------------------------------*/
 #preview-psc, #preview-mesto {
     display: inline-block;
     margin-top: -50px;
@@ -105,40 +128,72 @@
 }
 
 
-/* --------- UPRAVA UDAJOV V PREVIEW ODBERATEL -----------------------------------*/
+/*===============================================================================
+  |                 UPRAVA UDAJOV V PREVIEW ODBERATEL                           |
+  ===============================================================================*/
 #odberatel-section {
     position: absolute;
     margin-left: 320px;
     margin-top: 150px;
 
 }
-/* -------------------------DATES-------------------------------- */
+
+
+/*===============================================================================
+  |                 UPRAVA DATUMOV NARAZ SEKCIA CELA                            |
+  ===============================================================================*/
 .invoice-splatnost-preview {
     position: absolute;
     display: flex;
-    justify-content: space-between; /* Rovnomerne rozdelí priestor */
-    width: 450px; /* Uistite sa, že kontajner má plnú šírku */
-    top: 530px;
-    left: 230px;
+    flex-direction: column; /* Zoradenie detí v stĺpci */
+    width: 450px; /* Nastavenie šírky kontajnera */
+    top: 543px;
+    left: 525px;
+    gap: 10px; /* Medzera medzi .date-group elementmi */
 }
 
+
+  /*===============================================================================
+  |                 GROUPA NA DATES                                               |
+  ===============================================================================*/
 .date-group {
     display: flex;
-    flex-direction: column;
-    align-items: left; /* Centruje obsah */
-    width: 150px; /* Prípadne nastavte šírku, ktorá vám vyhovuje */
-    margin: 0, 50px; /* Ak chcete medzery medzi skupinami */
+    flex-direction: column; /* Vnútri .date-group, deti sú tiež zoradené v stĺpci */
+    justify-content: flex-start; /* Ak by ste chceli zarovnať obsah */
+    align-items: flex-start; /* Ak by ste chceli zarovnať obsah */
+    width: 100%; /* Aby zaberal celú šírku kontajnera */
+    margin-bottom: 20px; /* Medzera medzi skupinami */
 }
 
+/*-------------------------------------------------------------------------------
+  |                             LABEL A INPUT NA DATE                           |
+  -------------------------------------------------------------------------------*/
 .date-label, .date-value {
     text-align: left;
-    width: 100%; /* Zabezpečí, že text sa bude rozťahovať na šírku rodiča */
-    margin: 5px 0; /* Medzera nad a pod textom */
     font-size: 12px; /* Zmenšiteľná veľkosť písma */
-    margin: 0, -300px; /* Ak chcete medzery medzi skupinami */
+    white-space: nowrap; /* Zabezpečí, aby text neprešiel na nový riadok */
+    margin: 0; /* Odstránenie akéhokoľvek defaultného margin */
 }
 
-/* ------------------------------------------------------- */
+.date-label {
+    font-weight: bold; /* Ak chcete, aby nadpisy boli hrubšie */
+}
+
+.date-value {
+    margin-top: 5px; /* Medzera medzi nadpisom a hodnotou */
+}
+
+
+
+/*===============================================================================
+  |                  VELKE MODRE GRAFICKE ZNACENIE                               |
+  ===============================================================================*/
+#move-container-blue {
+  position: relative;
+  bottom: 500px;
+  left: -3%;
+}
+
 
 #preview-suma-blue {
     position: absolute;
@@ -157,7 +212,11 @@
 }
 
 
-/* [TEXT CELKOVA SUMA NA UHRADU + 0 EUR] */
+
+
+/*===============================================================================
+  |                  V MODROM TEXT CELKOVA SUMA NA UHRADU + 0 EUR                |
+  ===============================================================================*/
 #preview-total-sum {
     display: flex;
     align-items: center; /* Zarovná obsah vertikálne do stredu */
@@ -186,8 +245,9 @@
 }
 
 
-
-
+/*===============================================================================
+  |                  POPIS POLOZIEK + SUMA                                      |
+  ===============================================================================*/
 #header-of-polozky {
     position: absolute;
     top: 310px;
@@ -205,6 +265,9 @@
     margin-top: 1px;
 }
 
+/*===============================================================================
+  |                  TOTO JE AKY TEXT BUDE V POPISE POLOZKY A SUMA              |
+  ===============================================================================*/
 .invoice-preview-items {
     width: 560px; /* Príklad šírky; upravte podľa potreby */
     position: absolute;
@@ -233,4 +296,10 @@
 .preview-item-amount {
     text-align: right;
     white-space: nowrap; /* Zabezpečí, že text sa nebude zalamovať */
+}
+
+#qrcode {
+    position: absolute;
+    top: 530px; /* 535px; */
+    left: 315px; /* 315px; */
 }
