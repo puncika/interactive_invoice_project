@@ -1,53 +1,57 @@
 document.getElementById('generate-pdf').addEventListener('click', function() {
-    const paymentData = {
-        IBAN: document.getElementById("iban").value,
-        Amount: "100.00",
-        Currency: "EUR",
-        VariableSymbol: document.getElementById("order").value,
-        ConstantSymbol: "123",
-        SpecificSymbol: "456",
-        DueDate: new Date('2024-12-16'),
-        Reference: "",
-        Message: "Ďakujeme za obchod!"
+    const { jsPDF } = window.jspdf;
+
+    // Vytvorenie nového dokumentu PDF
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    // Získanie dynamických hodnôt z HTML
+    const paymentText = document.getElementById("uhrada-faktury").innerHTML;
+    const iban = document.getElementById("iban").value;
+    const order = document.getElementById("order").value;
+    const amount = document.getElementById("preview-final-sum").textContent.replace(' €', '');
+    const dueDate = document.getElementById("preview-splatnost-datum").textContent;
+
+    // Zber údajov
+    const data = {
+        supplier: {
+            name: document.getElementById('company-name').value,
+            ico: document.getElementById('ico').value,
+            psc: document.getElementById('dodavatel-psc').value,
+            city: document.getElementById('dodavatel-mesto').value,
+            phone: document.getElementById('contact-number').value
+        },
+        customer: {
+            name: document.getElementById('company-name-other').value,
+            ico: document.getElementById('ico-other').value,
+            bankAccount: document.getElementById('bank-account-other').value,
+            phone: document.getElementById('contact-number-other').value
+        }
     };
 
-    const qrString = generatePayBySquareString(
-        paymentData.IBAN, 
-        paymentData.Amount, 
-        paymentData.Currency, 
-        paymentData.VariableSymbol, 
-        paymentData.ConstantSymbol, 
-        paymentData.SpecificSymbol, 
-        paymentData.DueDate, 
-        paymentData.Reference, 
-        paymentData.Message
-    );
+    // Formátovanie údajov do PDF
+    doc.setFontSize(18);
+    doc.text("Faktúra", pageWidth / 2, 10, { align: 'center' });
 
-    const qrCanvas = document.createElement('canvas');
-    QRCode.toCanvas(qrCanvas, qrString, function(error) {
-        if (error) console.error(error);
-        else {
-            if (window.jspdf && window.jspdf.jsPDF) {
-                const doc = new window.jspdf.jsPDF();
+    doc.setFontSize(12);
+    doc.text("Dodávateľ", 20, 30);
+    doc.text("Odběratel", pageWidth / 2 + 20, 30);
 
-                // Pridanie textu do PDF
-                doc.setFontSize(12);
-                doc.text('Faktúra', 14, 20);
-                doc.setFontSize(10);
-                doc.text('20240001', 14, 26);
-                doc.text('Dodávateľ', 14, 35);
-                doc.text('Vaše meno', 14, 45);
-                doc.text('Vaša adresa', 14, 50);
-                doc.text('Vaše IČO', 14, 55);
+    doc.text(data.supplier.name, 20, 40);
+    doc.text(data.customer.name, pageWidth / 2 + 20, 40);
 
-                // Pridanie QR kódu do PDF
-                doc.addImage(qrCanvas.toDataURL("image/png"), 'PNG', 14, 70, 50, 50);
+    doc.text(`IBAN: ${iban}`, 20, 50);
+    doc.text(`Číslo objednávky: ${order}`, 20, 60);
+    doc.text(`Suma: ${amount} EUR`, 20, 70);
+    doc.text(`Dátum splatnosti: ${dueDate}`, 20, 80);
 
-                // Uloženie PDF
-                doc.save('faktura.pdf');
-            } else {
-                console.error('jsPDF knižnica nebola načítaná správne.');
-            }
-        }
-    });
+    // Získanie QR kódu z canvas elementu
+    const qrCanvas = document.getElementById("qrcode");
+    const qrDataUrl = qrCanvas.toDataURL("image/png");
+
+    // Pridanie QR kódu do PDF
+    doc.addImage(qrDataUrl, 'PNG', 20, 90, 50, 50);
+
+    // Uloženie PDF
+    doc.save('faktura.pdf');
 });
