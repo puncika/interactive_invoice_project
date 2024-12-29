@@ -18,8 +18,10 @@ function setActiveButton(activeId) {
     let paymentText = "";
     if (activeId === 'bankovy-prevod') {
         paymentText = '<strong>Úhrada faktúry:</strong> Bankovým prevodom';
+        document.getElementById("qrcode").style.display = "block";
     } else if (activeId === 'hotovost') {
         paymentText = '<strong>Úhrada faktúry:</strong> Hotovosťou';
+        document.getElementById("qrcode").style.display = "none";
     }
 
     // Aktualizácia textu v náhľade A4
@@ -109,4 +111,48 @@ document.querySelector('.obalenie-odberatela').addEventListener('input', functio
     if (previewElement) {
         previewElement.textContent = target.value;
     }
+});
+
+// Funkcia na aktualizáciu náhľadu pri načítaní stránky
+function updatePreview() {
+    document.getElementById("preview-company-name").textContent = document.getElementById("company-name").value;
+    document.getElementById("preview-ico").textContent = document.getElementById("ico").value;
+    document.getElementById("preview-psc").textContent = document.getElementById("dodavatel-psc").value;
+    document.getElementById("preview-mesto").textContent = document.getElementById("dodavatel-mesto").value;
+    document.getElementById("preview-contact-number").textContent = document.getElementById("contact-number").value;
+
+    document.getElementById("preview-company-name-other").textContent = document.getElementById("company-name-other").value;
+    document.getElementById("preview-ico-other").textContent = document.getElementById("ico-other").value;
+    document.getElementById("preview-bank-account-other").textContent = document.getElementById("bank-account-other").value;
+    document.getElementById("preview-contact-number-other").textContent = document.getElementById("contact-number-other").value;
+
+    document.querySelectorAll('.bank-details-update').forEach(function(element) {
+        const previewId = 'preview-' + element.id;
+        const bankUdajeContainer = document.getElementById('bank-udaje');
+        const previewElement = bankUdajeContainer.querySelector('#' + previewId);
+        if (previewElement) {
+            previewElement.textContent = element.value;
+        }
+    });
+    
+    document.querySelectorAll('.obalenie-dodavatela').forEach(function(element) {
+        const previewId = 'preview-' + element.id;
+        const previewElement = document.getElementById(previewId);
+        if (previewElement) {
+            previewElement.textContent = element.value;
+        }
+    });
+
+    document.querySelectorAll('.obalenie-odberatela').forEach(function(element) {
+        const previewId = 'preview-' + element.id;
+        const previewElement = document.getElementById(previewId);
+        if (previewElement) {
+            previewElement.textContent = element.value;
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    setActiveButton('bankovy-prevod');
+    updatePreview(); // Aktualizácia náhľadu pri načítaní stránky
 });
