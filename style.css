@@ -4,7 +4,7 @@
   ===============================================================================*/
 #wrapper-left {
     position: relative;
-    left: 7%;
+    left: 0px;
     bottom: 15px;
 }
 
@@ -296,7 +296,7 @@ input[type="text"] {
 #generate-pdf {    /* DOWNLOAD BUTTON GREEN    */     
     display: block;
     position: absolute; /* Potrebné pre zarovnanie tlačidla */
-    left: 73%; /* Posunie tlačidlo do stredu */
+    left: 1190px; /* Posunie tlačidlo do stredu */
     transform: translate(-50%, 0); /* Presunie späť o polovicu svoj šírky, aby bol zarovnané na stred */
     margin: 0 auto; /* zarovná tlačidlo do stredu, ak ho chceš v strede */
     padding: 10px 20px;
@@ -306,7 +306,7 @@ input[type="text"] {
     border-radius: 5px;
     max-height: 40px;
     text-align: center; /* Zarovná text v tlačidle na stred */
-    bottom: 50px;
+    bottom: -180px;
 }
 
 #generate-pdf:hover {
