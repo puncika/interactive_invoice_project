@@ -125,8 +125,9 @@ function updatePreview() {
     document.getElementById("preview-ico-other").textContent = document.getElementById("ico-other").value;
     document.getElementById("preview-bank-account-other").textContent = document.getElementById("bank-account-other").value;
     document.getElementById("preview-contact-number-other").textContent = document.getElementById("contact-number-other").value;
+    document.getElementById("preview-dodanie-datum").textContent = document.getElementById("date-section-dodania").value;
 
-    document.querySelectorAll('.bank-details-update').forEach(function(element) {
+    document.querySelectorAll('.container-bank-iban-swift-order input').forEach(function(element) {
         const previewId = 'preview-' + element.id;
         const bankUdajeContainer = document.getElementById('bank-udaje');
         const previewElement = bankUdajeContainer.querySelector('#' + previewId);
