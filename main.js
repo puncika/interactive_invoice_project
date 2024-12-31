@@ -1,9 +1,22 @@
 /*===============================================================================
 |         FUNKCIA NA NACITANIE STRANKY + NUMBER CISLA NA FAKTURU                 |
   ===============================================================================*/
-window.onload = function() {
+  window.onload = function() {
     console.log("Stránka je načítaná!");
     generateInvoiceNumber(); // Zavolá funkciu na generovanie čísla faktúry
+
+    // Načítanie a nastavenie hodnôt z localStorage
+    document.querySelectorAll("[id^='day-select'], [id^='month-select'], [id^='year-select']").forEach(select => {
+        const storedValue = localStorage.getItem(select.id);
+        if (storedValue) {
+            select.value = storedValue;
+        }
+    });
+
+    // Zavolanie funkcií na aktualizáciu náhľadov
+    updateDodanieDatum();
+    updateVystaveniaDatum();
+    updateSplatnostDatum();
 };
 
 // Funkcia na vytvorenie čísla faktury pre uživatela
@@ -149,5 +162,15 @@ function updateSplatnostDatum() {
     }
 }
 
+function saveToLocalStorage(selectId, value) {
+    localStorage.setItem(selectId, value);
+}
 
+document.querySelectorAll("[id^='day-select'], [id^='month-select'], [id^='year-select']").forEach(select => {
+    select.addEventListener("change", function() {
+        saveToLocalStorage(this.id, this.value);
+        // Tu môžete zavolať vašu pôvodnú funkciu na aktualizáciu náhľadu
+        // napríklad: updateDodanieDatum(), updateVystaveniaDatum() alebo updateSplatnostDatum()
+    });
+});
 
