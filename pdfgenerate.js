@@ -4,13 +4,19 @@ document.getElementById('generate-pdf').addEventListener('click', function() {
     // Vytvorenie nového dokumentu PDF
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
+    const marginTop = 30; // Nastavenie horného marginu
 
     // Získanie dynamických hodnôt z HTML
-    const paymentText = document.getElementById("uhrada-faktury").innerHTML;
+    const paymentText = document.getElementById("uhrada-faktury").textContent;
+    const bank = document.getElementById("bank").value;
     const iban = document.getElementById("iban").value;
+    const swift = document.getElementById("swift").value;   
     const order = document.getElementById("order").value;
-    const amount = document.getElementById("preview-final-sum").textContent.replace(' €', '');
-    const dueDate = document.getElementById("preview-splatnost-datum").textContent;
+    const amount = document.getElementById("preview-final-sum").textContent.replace(' EUR', '');
+    const dueDateDodania = document.getElementById("preview-dodanie-datum").textContent;
+    const dueDateVystavenia = document.getElementById("preview-vystavenia-datum").textContent;
+    const dueDateSplatnost = document.getElementById("preview-splatnost-datum").textContent;
+    const invoiceNumber = document.getElementById("faktura-title-number").textContent;
 
     // Zber údajov
     const data = {
@@ -29,28 +35,127 @@ document.getElementById('generate-pdf').addEventListener('click', function() {
         }
     };
 
-    // Formátovanie údajov do PDF
-    doc.setFontSize(18);
-    doc.text("Faktúra", pageWidth / 2, 10, { align: 'center' });
+    // Pridanie neviditeľného marginu
+    let currentY = marginTop; // Nastavenie počiatočnej vertikálnej pozície
+
+    doc.setFontSize(30);
+    doc.setFont("helvetica", "bold");
+    doc.text("Faktúra", pageWidth - 20, currentY, { align: 'right' });
+    currentY += 10;
 
     doc.setFontSize(12);
-    doc.text("Dodávateľ", 20, 30);
-    doc.text("Odběratel", pageWidth / 2 + 20, 30);
+    doc.setFont("helvetica", "normal");
+    doc.text(`${invoiceNumber}`, pageWidth - 20, 35, { align: 'right' });
+    currentY += 10;
 
-    doc.text(data.supplier.name, 20, 40);
-    doc.text(data.customer.name, pageWidth / 2 + 20, 40);
+    function DodavatelSection(doc, x, y, data) {
+        doc.setFont("helvetica", "bold");
+        doc.text("Dodávatel", x, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "normal");
+        doc.text(data.supplier.name, x, y);
+        y += 10;
+        doc.text(`${data.supplier.ico}`, x, y);
+        y += 10;
+        doc.text(`${data.supplier.psc}`, x, y);
+        doc.text(`${data.supplier.city}`, x + 10, y);
+        y += 10;
+        doc.text(`${data.supplier.phone}`, x, y);
+        return y + 10; // Vráti novú vertikálnu pozíciu
+    }
+    
+      // Funkcia na vykreslenie sekcie "Odberateľ"
+      function OdberatelSection(doc, x, y, data) {
+        doc.setFont("helvetica", "bold");
+        doc.text("Odberatel", x, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "normal");
+        doc.text(data.customer.name, x, y);
+        y += 10;
+        doc.text(`${data.customer.ico}`, x, y);
+        y += 10;
+        doc.text(`${data.customer.bankAccount}`, x, y);
+        y += 10;
+        doc.text(`${data.customer.phone}`, x, y);
+        return y + 10; // Vráti novú vertikálnu pozíciu
+    }
 
-    doc.text(`IBAN: ${iban}`, 20, 50);
-    doc.text(`Číslo objednávky: ${order}`, 20, 60);
-    doc.text(`Suma: ${amount} EUR`, 20, 70);
-    doc.text(`Dátum splatnosti: ${dueDate}`, 20, 80);
+    // Vykreslenie sekcií "Dodávateľ" a "Odberateľ"
+    currentY = DodavatelSection(doc, 20, currentY, data);
+    currentY = OdberatelSection(doc, pageWidth - 120, currentY - 50, data); // Posunúť "Odberateľ" sekciu späť na pôvodnú pozíciu
+    currentY += 10;
 
-    // Získanie QR kódu z canvas elementu
-    const qrCanvas = document.getElementById("qrcode");
-    const qrDataUrl = qrCanvas.toDataURL("image/png");
+    doc.setFont("helvetica", "bold");
+    doc.text("Popis položiek", 20, currentY);
+    doc.text("Suma", pageWidth - 20, currentY, { align: 'right' });
+    doc.setFont("helvetica", "normal");
+    doc.text("-------------------------------------------------------------------------------------------------------------------------", 20, currentY + 5);
+    currentY += 10;
 
-    // Pridanie QR kódu do PDF
-    doc.addImage(qrDataUrl, 'PNG', 20, 90, 50, 50);
+    // Pridanie položiek faktúry
+    const invoiceItems = document.querySelectorAll('.preview-item-row');
+    invoiceItems.forEach(item => {
+        const itemName = item.querySelector('.preview-item-description').textContent;
+        const itemTotal = item.querySelector('.preview-item-amount').textContent;
+
+        doc.text(itemName, 20, currentY);
+        doc.text(itemTotal, pageWidth - 20, currentY, { align: 'right' });
+        currentY += 10;
+    });
+
+    // Pridanie modrého divu
+    const divX = 20;
+    const divY = currentY;
+    const divWidth = 170;
+    const divHeight = 20;
+
+    doc.setFillColor(5, 160, 221); // Nastavenie farby pozadia
+    doc.rect(divX, divY, divWidth, divHeight, 'F'); // Vytvorenie obdĺžnika s farbou pozadia
+
+    doc.setTextColor(255, 255, 255); // Nastavenie farby textu na bielu
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("Celková suma na uhradenie", divX + 7, divY + 12); // Pridanie textu do obdĺžnika
+    doc.text(`${amount}`, divX + 145, divY + 12,);
+
+    currentY += divHeight + 10; // Posunutie currentY pod modrý div
+    
+    doc.setTextColor(0, 0, 0); // Nastavenie farby textu na bielu
+    doc.setFontSize(15);
+    doc.setFont("helvetica", "bold");
+    doc.text("Bankové údaje", 20, currentY);
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "bold");
+    doc.text(`${bank}`, 20, currentY + 10);
+    doc.text(`${iban}`, 20, currentY + 20);
+    doc.text(`${swift}`, 20, currentY + 30);
+    doc.text(`${order}`, 20, currentY + 40);
+
+    // Pridanie textu s rôznymi štýlmi
+    const paymentTextParts = paymentText.split(':');
+    doc.setFont("helvetica", "bold");
+    doc.text(paymentTextParts[0] + ':', 20, currentY + 50);
+    doc.setFont("helvetica", "normal");
+    doc.text(paymentTextParts[1], 51, currentY + 50);
+
+    doc.text("Datum dodania", 155, currentY);
+    doc.text(`${dueDateDodania}`, 155, currentY + 5);
+    doc.text("Datum vystavenia", 155, currentY + 20);
+    doc.text(`${dueDateVystavenia}`, 155, currentY + 25);
+    doc.text("Splatnost", 155, currentY + 40);
+    doc.text(`${dueDateSplatnost}`, 155, currentY + 45);
+
+    // Pridanie QR kódu do PDF iba ak nie je platba hotovosťou
+    if (!paymentText.includes("Hotovosťou")) {
+        // Získanie QR kódu z canvas elementu
+        const qrCanvas = document.getElementById("qrcode");
+        const qrDataUrl = qrCanvas.toDataURL("image/png");
+
+        // Pridanie QR kódu do PDF
+        doc.addImage(qrDataUrl, 'PNG', 95, currentY - 7, 50, 50);
+    }
 
     // Uloženie PDF
     doc.save('faktura.pdf');
