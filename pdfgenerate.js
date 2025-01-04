@@ -118,7 +118,7 @@ document.getElementById('generate-pdf').addEventListener('click', function() {
     doc.setFontSize(16);
     doc.setFont("helvetica", "bold");
     doc.text("Celková suma na uhradenie", divX + 7, divY + 12); // Pridanie textu do obdĺžnika
-    doc.text(`${amount}`, divX + 145, divY + 12,);
+    doc.text(`${amount}`, divX + 167, divY + 12, { align: 'right' });
 
     currentY += divHeight + 10; // Posunutie currentY pod modrý div
     
