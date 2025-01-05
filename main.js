@@ -4,6 +4,8 @@
   window.onload = function() {
     console.log("Stránka je načítaná!");
     generateInvoiceNumber(); // Zavolá funkciu na generovanie čísla faktúry
+    zmenTextNaCislaVSelectoch();
+
 
     // Načítanie a nastavenie hodnôt z localStorage
     document.querySelectorAll("[id^='day-select'], [id^='month-select'], [id^='year-select']").forEach(select => {
@@ -25,6 +27,54 @@ function generateInvoiceNumber() {
     const invoiceNumber = currentYearInvoiceGen + "0001";
     document.getElementById("faktura-title-number").textContent = invoiceNumber;
 }
+
+// Mapovanie mesiacov na čísla
+const mesiacNaCislo = {
+    'Január': '01', 'Február': '02', 'Marec': '03', 'Apríl': '04', 'Máj': '05', 'Jún': '06',
+    'Júl': '07', 'August': '08', 'September': '09', 'Október': '10', 'November': '11', 'December': '12'
+};
+
+// Funkcia na zmenu textových mesiacov na čísla v selectoch
+function zmenTextNaCislaVSelectoch() {
+    const selecty = ['month-select-dodanie', 'month-select-vystavenia', 'month-select-splatnost'];
+    selecty.forEach(id => {
+        const select = document.getElementById(id);
+        if (select) {
+            const selectedValue = select.value;
+
+            // Vymažte možnosti selectu
+            while (select.options.length > 0) {
+                select.remove(0);
+            }
+
+            // Pridajte späť možnosti
+            if (window.innerWidth < 768) { // Ak je obrazovka menšia
+                for (let mesiac in mesiacNaCislo) {
+                    let option = document.createElement("option");
+                    option.text = mesiacNaCislo[mesiac]; // Číslo mesiaca namiesto textu
+                    option.value = mesiacNaCislo[mesiac]; // Hodnota je tiež číslo
+                    select.add(option);
+                }
+            } else { // Ak je obrazovka väčšia
+                for (let mesiac in mesiacNaCislo) {
+                    let option = document.createElement("option");
+                    option.text = mesiac; // Pôvodný textový mesiac
+                    option.value = mesiacNaCislo[mesiac]; // Hodnota zostáva číslo
+                    select.add(option);
+                }
+            }
+
+            // Obnovte pôvodne zvolenú hodnotu, ak je dostupná
+            if (selectedValue) {
+                select.value = selectedValue;
+            }
+        }
+    });
+}
+
+// Pridajte poslucháč na zmenu veľkosti okna
+window.addEventListener('resize', zmenTextNaCislaVSelectoch);
+
 
 
 
