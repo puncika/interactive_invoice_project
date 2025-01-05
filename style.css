@@ -230,7 +230,7 @@ body {
 .date-picker {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6.5px;
     font-family: Arial, sans-serif;
     font-size: 14px;
 }
@@ -400,6 +400,7 @@ input[type="text"] {
     max-width: 150px;
 }
 
+
 .total-row {
     display: flex;
     justify-content: space-between;
@@ -455,7 +456,7 @@ input[type="text"] {
 |                                Mobilné štýly                                  |
   ===============================================================================*/
 /* ---------------------------------------------------------------------------- */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .container {
       width: 95%;
       padding: 10px;
@@ -477,6 +478,209 @@ input[type="text"] {
     .row {
       flex-direction: column;
     }
-  }
+  } */
+  /* Mobilné zariadenia */
+/*   @media only screen and (max-width: 767px) { */
+@media (max-width: 768px) {
+    .form-left-section-all {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    input {
+        max-width: 280px;
+    }
+
+    .form-group-inline {
+        display: flex;
+        gap: 25px; /* Medzera medzi PSČ a Mesto */
+        max-width: 280px;
+    }
+
+    .form-section {
+        order: 1; /* Dodávateľ zostáva prvý */
+    }
+
+    .left-form-bankdetails-with-date {
+        position: absolute;
+        top: 400px;
+        max-width: 500px;
+    }
+
+    .bank-details-update {
+        max-width: 280px;
+    }
+
+
+    .button-container-bank-cash {
+        gap: 5px;
+        text-align: center;  /* Zarovná text do stredu tlačidla */
+        max-width: 250px;
+    }
+
+    #bankovy-prevod {
+        padding: 15px 17px;
+        border: 1px medium rgb(0, 0, 0);
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        max-height: 150px;
+        white-space: nowrap; /* Zabráni zalamovaniu textu */
+        text-align: center;  /* Zarovná text do stredu tlačidla */
+        max-width: 147px;
+    }
+    
+    /* Hotovosť tlačidlo */
+    #hotovost {
+        padding: 0px 40px;
+        border: 1px medium rgb(0, 0, 0);
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        max-height: 150px;
+        white-space: nowrap; /* Zabráni zalamovaniu textu */
+        text-align: center;  /* Zarovná text do stredu tlačidla */
+        max-width: 250px;
+    }
+
+    .celok-datumov {
+        /* Zmenšenie veľkosti písma */
+        font-size: 14px; /* Alebo menšia hodnota */
+        top: 320px;
+        right: -20px;
+    }
+
+    .date-picker {
+        gap: 6.5px;
+    }
+
+    .date-picker option {
+        margin-left: 10px;
+    }
+    
+    .date-picker select {
+        right: -20px;
+        margin-left: 3px;
+    }
+    
+    #date-section-dodania {
+        max-width: 280px;
+    }
+
+    #date-section-vystavenia {
+        max-width: 280px;
+    }
+
+    #date-section-splatnosti {
+        max-width: 280px;
+    }
+
+    .form-section:nth-of-type(2) {
+        position: absolute;
+        top: 1000px;
+    }
+
+
+
+
+    .invoice-item-section {
+        position: absolute;
+        top: 1430px;
+        max-width: 266px;
+    }
+
+    .item-name,
+    .item-total {
+    margin-right: 10px;
+    margin-left: -20px;
+    margin-top: -60px;
+    }
+
+    .item-total input {
+        max-width: 85px;
+    }
+
+    .item-total label {
+       visibility: hidden;
+    }
+
+    .item-name input {
+       max-width: 260px;
+    }
+
+    .item-total-input-only {
+        margin-top: 77px;
+        width: 350px;
+        margin-left: -630px;
+
+    }
+
+    .item-name-input {
+        margin-bottom: 35px;
+        margin-top: 35px;
+    }
+
+    .item-total-input {
+        position: absolute;
+        max-width: 50px;
+        left: 9.5px;
+        margin-top: 22px;
+
+    }
+
+    .remove-item-button {
+        position: absolute;
+        left: 110px;
+        margin-top: 25px;
+    }
+
+    .add-item-button button {
+        margin-top: -10px;
+        margin-left: -5px;
+        margin-bottom: 5px;
+
+    }
+
+    .total-row {
+        margin-top: 50px;
+    }
+
+    .currency-symbol {
+        position: absolute;
+        margin-top: 31px;
+        margin-left: -630px;
+    }
+
+    .currency-symbol-only {
+        position: absolute;
+        margin-top: 86px;
+        margin-left: -18px;
+    }
+
+    #generate-pdf{
+        position: relative;
+        left: 60px;
+        bottom: -1120px;
+    }
+
+    
+}
+
+/* Tablety */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Štýly pre tablety */
+}
+
+/* Malé obrazovky desktopov */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    /* Štýly pre malé obrazovky desktopov */
+}
+
+/* Štandardné obrazovky desktopov */
+@media only screen and (min-width: 1201px) {
+    /* Štýly pre väčšie obrazovky desktopov */
+}
 
   /*background-color: #05a0dd;  Tyrkysová farba pozadia */
