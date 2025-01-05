@@ -17,6 +17,23 @@
     bottom: 700px;
 }
 
+@media (max-width: 768px) {
+  #a4-preview {
+      position: relative;
+      left: -151px; /* Posunutie o 10 pixelov doprava */
+      top: 1220px; /* Posunutie o 10 pixelov nahor */
+      transform: scale(0.54, 0.7); /* Zmenšenie veľkosti pre lepšie zobrazenie */
+      transform-origin: center;
+      margin: 0; /* Odstránenie margin */
+      padding: 10px; /* Zmenšenie padding */
+  }
+
+  /* Prispôsobenie veľkosti textu a ďalších elementov */
+  #a4-preview * {
+      font-size: 1em; /* Zmenšenie veľkosti písma */
+  }
+}
+
 
 
 /*===============================================================================
