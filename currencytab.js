@@ -71,6 +71,7 @@ function addInvoiceItemRow(name = '', total = '', hasCurrencySymbol = false, has
         updateInvoicePreview(); // Aktualizácia náhľadu faktúry
         updateAddButtonVisibility(); // Aktualizácia viditeľnosti tlačidla pre pridanie položky
         updateMoveContainerPosition(); // Aktualizácia pozície kontajnera po odstránení položky
+        updateMoveContainerPositionA4();
     });
 
     // Presunieme tlačidlo pre pridanie položky pod nový riadok
@@ -81,6 +82,7 @@ function addInvoiceItemRow(name = '', total = '', hasCurrencySymbol = false, has
     updateAddButtonVisibility();
     // Pridanie logiky na posunutie náhľadu celkovej sumy
     updateMoveContainerPosition();
+    updateMoveContainerPositionA4();
 }
 
     function updateMoveContainerPosition() {
@@ -89,6 +91,17 @@ function addInvoiceItemRow(name = '', total = '', hasCurrencySymbol = false, has
         
         // Predpokladajme, že každá položka pridáva 35 pixelov posunu
         const additionalMargin = items.length * 35; // 35px na každú položku
+        
+        // Nastavenie nového margin-top pre kontajner
+        moveContainer.style.marginTop = `${additionalMargin}px`;
+    }
+
+    function updateMoveContainerPositionA4() {
+        const items = document.querySelectorAll('.invoice-row');
+        const moveContainer = document.getElementById('a4-preview');
+        
+        // Predpokladajme, že každá položka pridáva 35 pixelov posunu
+        const additionalMargin = items.length * 60; // 35px na každú položku
         
         // Nastavenie nového margin-top pre kontajner
         moveContainer.style.marginTop = `${additionalMargin}px`;
