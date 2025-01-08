@@ -100,11 +100,16 @@ function addInvoiceItemRow(name = '', total = '', hasCurrencySymbol = false, has
         const items = document.querySelectorAll('.invoice-row');
         const moveContainer = document.getElementById('a4-preview');
         
-        // Predpokladajme, že každá položka pridáva 35 pixelov posunu
-        const additionalMargin = items.length * 60; // 35px na každú položku
+        // Predpokladajme, že každá položka pridáva 60 pixelov posunu
+        const additionalMargin = items.length * 60; // 60px na každú položku
         
-        // Nastavenie nového margin-top pre kontajner
-        moveContainer.style.marginTop = `${additionalMargin}px`;
+        // Detekcia šírky obrazovky pre mobilné zariadenia (typicky menej ako 768px)
+        if (window.innerWidth < 768) { 
+            moveContainer.style.marginTop = `${additionalMargin}px`;
+        } else {
+            // Ak chcete, aby sa na iných zariadeniach nič nestalo, alebo nastavte iný margin
+            moveContainer.style.marginTop = "0px"; // Prípadne iný defaultný margin
+        }
     }
 
     function updateAddButtonVisibility() {
