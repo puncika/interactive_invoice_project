@@ -1,3 +1,33 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Získanie aktuálneho dáta
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+    const currentMonth = currentDate.getMonth() + 1; // Mesiace v JavaScript sú indexované od 0
+    const currentYear = currentDate.getFullYear();
+
+    // Nastavenie aktuálneho dňa
+    document.getElementById("day-select-dodanie").value = currentDay;
+    document.getElementById("day-select-vystavenia").value = currentDay;
+    document.getElementById("day-select-splatnost").value = currentDay;
+
+    // Nastavenie aktuálneho roka
+    document.getElementById("year-select-dodanie").value = currentYear;
+    document.getElementById("year-select-vystavenia").value = currentYear;
+    document.getElementById("year-select-splatnost").value = currentYear;
+
+
+    // Nastavenie mesiacov po naplnení selectov
+    document.querySelectorAll("[id^='month-select-splatnost']").forEach(select => {
+        const months = ["Január", "Február", "Marec", "Apríl", "Máj", "Jún", "Júl", "August", "September", "Október", "November", "December"];
+        select.value = months[currentMonth];
+    });
+
+    // Volanie funkcie na aktualizáciu náhľadu
+    updateDodanieDatum();
+    updateVystaveniaDatum();
+    updateSplatnostDatum();
+});
+
 /*===============================================================================
 |         FUNKCIA NA NACITANIE STRANKY + NUMBER CISLA NA FAKTURU                 |
   ===============================================================================*/
@@ -13,12 +43,11 @@
         if (storedValue) {
             select.value = storedValue;
         }
-    });
-
-    // Zavolanie funkcií na aktualizáciu náhľadov
+            // Volanie funkcie na aktualizáciu náhľadu
     updateDodanieDatum();
     updateVystaveniaDatum();
     updateSplatnostDatum();
+    });
 };
 
 // Funkcia na vytvorenie čísla faktury pre uživatela
