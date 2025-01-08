@@ -2,6 +2,43 @@
 /*===============================================================================
   |                            KONTAJNERE                                       |
   ===============================================================================*/
+  #suggestions, #suggestions-other {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 365px;
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+}
+
+#suggestions.visible, #suggestions-other.visible {
+    border: 1px solid #ccc;
+}
+
+#suggestions li, #suggestions-other li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#suggestions li:hover, #suggestions-other li:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+#suggestions li strong, #suggestions-other li strong {
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    color: #000;
+}
+
+#suggestions li span, #suggestions-other li span {
+    display: block;
+    font-size: 0.9em;
+    color: #000;
+}
+
 #wrapper-left {
     position: relative;
     left: 0px;
@@ -28,6 +65,7 @@
 .form-group {
     margin-bottom: 10px;
     width: 350px;
+    
 }
 
 .form-group label {
@@ -38,6 +76,7 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+
 }
 
 .form-group {
@@ -54,7 +93,7 @@ label {
 }
 
 input {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný tieň */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* //Jemný tieň// */
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
