@@ -20,6 +20,7 @@
             <div class="form-group">
                 <label for="company-name">Meno firmy</label>
                 <input type="text" id="company-name" name="company-name">
+                <ul id="suggestions"></ul> <!-- Pridaný element pre zobrazenie návrhov -->
             </div>
             <div class="form-group">
                 <label for="ico">IČO</label>
@@ -47,6 +48,7 @@
             <div class="form-group">
                 <label for="company-name-other">Meno firmy</label>
                 <input type="text" id="company-name-other" name="company-name-other">
+                <ul id="suggestions-other"></ul> <!-- Pridaný element pre zobrazenie návrhov -->
             </div>   
             <div class="form-group">             
                 <label for="ico-other">IČO</label>
@@ -261,7 +263,7 @@
         </div> 
      </div> 
     </div>
-     
+
 
 <!-- -------------------------------------------------------------------------------
                         NÁHĽAD V A4 - PREVIEW ALL
@@ -345,9 +347,9 @@
                 <p id="break-point">----------------------------------------------------------------------------------------------------------------------</p>
             </div>
             <div id="invoice-preview-items" class="invoice-preview-items"></div>
-        
 
         </div>
+
 
         
 
@@ -357,6 +359,7 @@
     <script src="preview.js" defer></script>
     <script src="currencytab.js" defer></script>
     <script src="pdfgenerate.js"></script>
+    <script src="database.js"></script>
 </body>
 
 </html>
